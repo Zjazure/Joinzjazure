@@ -1,0 +1,131 @@
+﻿@model Joinzjazure.Models.ApplicationForm
+
+@{
+    ViewBag.Title = "湛江一中IT社 网络报名系统";
+}
+
+@using (Html.BeginForm())
+{
+
+    <div class="row">
+        <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            @Html.LabelFor(m => m.Name)
+            <span class="label label-info">必填</span>
+            @Html.EditorFor(m => m.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(m => m.Name, null, new { @class = "text-warning" })
+        </div>
+
+        <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            @Html.LabelFor(m => m.Gender)
+            <span class="label label-info">必填</span>
+            @Html.DropDownListFor(m => m.Gender, new SelectList(new[] { new { Text = "汉子", Value = true }, new { Text = "妹纸", Value = false } }, "Value", "Text"),
+new { @class = "form-control" })
+        </div>
+        <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            @Html.LabelFor(m => m.Grade)
+            <span class="label label-info">必填</span>
+            @Html.DropDownListFor(m => m.Grade, new SelectList(new[] { new { Text = "高一", Value = 1 }, new { Text = "高二", Value = 2 } }, "Value", "Text"),
+new { @class = "form-control" })
+        </div>
+
+        <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            @Html.LabelFor(m => m.Class)
+            <span class="label label-info">必填</span>
+            @Html.EditorFor(m => m.Class, new { htmlAttributes = new { @class = "form-control", placeHolder = "1 - 42" } })
+            @Html.ValidationMessageFor(m => m.Class, null, new { @class = "text-warning" })
+        </div>
+    </div>
+    <div class="form-group">
+        @*@Html.LabelFor(m => m.Groups)*@
+        <label>小组</label>
+        <span class="label label-info">点击小组名称查看小组介绍</span>
+        @Html.HiddenFor(m => m.Groups)
+        <div class="panel-group">
+            @{
+                var groups = Joinzjazure.Data.GroupXmlStore.GetAll();
+            }
+            @foreach (var g in groups)
+            {
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <input type="checkbox" id="@g.Id" name="@g.Id" value="@g.Value" />
+                            <script>
+                                $('#@g.Id').click(function () {
+                                    handleCheck('#@g.Id',@g.Value);
+                                });
+                            </script>
+                            <a data-toggle="collapse" class="info" data-parent="#accordion" href="@string.Format("#collapse{0}", @g.Id)">@g.Name</a>
+                        </h4>
+                    </div>
+                    <div id="@string.Format("collapse{0}", @g.Id)" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            @foreach (var line in g.Lines)
+                            {
+                                <p>@line</p>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            }
+            @Html.ValidationMessageFor(m => m.Groups, null, new { @class = "text-warning" })
+        </div>
+    </div>
+
+                <div class="row">
+                    <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                        @Html.LabelFor(m => m.Email)
+                        <span class="label label-info">必填</span>
+                        @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(m => m.Email, null, new { @class = "text-warning" })
+                    </div>
+
+                    <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                        @Html.LabelFor(m => m.Phone)
+                        @Html.EditorFor(m => m.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+
+                    <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                        @Html.LabelFor(m => m.QQ)
+                        @Html.EditorFor(m => m.QQ, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(m => m.QQ, null, new { @class = "text-warning" })
+                    </div>
+
+                    <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                        @Html.LabelFor(m => m.Weibo)
+                        @Html.EditorFor(m => m.Weibo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(m => m.Weibo, null, new { @class = "text-warning" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Description)
+                    @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = "5" })
+                    @Html.ValidationMessageFor(m => m.Description, null, new { @class = "text-warning" })
+                </div>
+
+                <div class="form-group">
+                    <label>验证码</label>
+                    @{
+                        var code = new Joinzjazure.Controllers.HomeController().GetVerificationCode();
+                    }
+                    <button id="RefreshQ" type="button" class="btn btn-sm btn-link">换个问题</button>
+                    <p id="ValQ">@code.Question</p>
+                    @Html.HiddenFor(m => m.VerificationCodeId)
+                    @Html.EditorFor(m => m.VerificationCodeAnswer, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(m => m.VerificationCodeAnswer, null, new { @class = "text-warning" })
+                    <script>
+                        $('#RefreshQ').click(function () {
+                            $.getJSON('/Home/GetVerificationCodeAjax', function (data) {
+                                $("#ValQ").text(data.Question);
+                                $('#VerificationCodeId').val(data.Id);
+                            });
+                        });
+                        $('#VerificationCodeId').val('@code.Id');
+                    </script>
+                </div>
+                        <button type="submit" class="btn btn-info">提交报名表</button>
+                        <button type="reset" class="btn btn-link">重新填写</button>
+
+                        }

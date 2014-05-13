@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>@ViewBag.Title</title>
+    @System.Web.Optimization.Styles.Render("~/Content/css")
+    @System.Web.Optimization.Scripts.Render("~/bundles/jquery")
+    @System.Web.Optimization.Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body>
+    <div class="container" style="background-color:rgba(255,255,255,0.85)">
+        <div class="page-header">
+            <h1>湛江一中IT社 网络报名系统 <small>预览版3.0</small></h1>
+        </div>
+        <p class="alert alert-info">本系统处于测试阶段，所提交的报名信息仅作测试用途，详情请联系湛江一中IT社相关负责人</p>
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - 湛江一中IT社</p>
+            <p>本网站运行于 <a href="http://azure.microsoft.com/en-us/" target="_blank">Microsoft Azure</a> 北京数据中心</p>
+        </footer>
+    </div>
+    @System.Web.Optimization.Scripts.Render("~/bundles/val")
+    @System.Web.Optimization.Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
