@@ -3,7 +3,7 @@ using System.Web.Mvc;
 
 namespace Joinzjazure.Models
 {
-    public class ApplicationForm//(string name, bool gender, int grade, int classNum, string email)
+    public class ApplicationForm
     {
         public ApplicationForm()
         {
@@ -12,7 +12,7 @@ namespace Joinzjazure.Models
         [Required(ErrorMessage = "填写班级，福利送上门哦")]
         [Range(1, 42, ErrorMessage = "同学你走错班了")]
         [Display(Name = "班级")]
-        public int Class { get; set; }/* = classNum;*/
+        public int Class { get; set; }
 
         [MaxLength(1000, ErrorMessage = "同学，这不是写作文，500字已经很多了好不好")]
         [Display(Name = "其他信息")]
@@ -21,16 +21,16 @@ namespace Joinzjazure.Models
         [Required(ErrorMessage = "填个邮箱，方便联系")]
         [EmailAddress(ErrorMessage = "你确定你填的是邮箱地址？")]
         [Display(Name = "邮箱")]
-        public string Email { get; set; } /*= email;*/
+        public string Email { get; set; }
 
         [Required]
         [Display(Name = "性别")]
-        public bool Gender { get; set; }/* = gender;*/
+        public bool Gender { get; set; }
 
         [Required]
         [Range(1, 2, ErrorMessage = "同学你来错学校了")]
         [Display(Name = "年级")]
-        public int Grade { get; set; }/* = grade;*/
+        public int Grade { get; set; }
 
         [Required(ErrorMessage = "请至少选择一个小组")]
         [Display(Name = "小组")]
@@ -39,9 +39,10 @@ namespace Joinzjazure.Models
         [Required(ErrorMessage = "什么？你是无名氏？")]
         [MaxLength(10, ErrorMessage = "你名字这么屌，家里知道吗")]
         [Display(Name = "姓名")]
-        public string Name { get; set; } /*= name;*/
+        public string Name { get; set; }
 
         [Phone]
+        [RegularExpression(@"(\+86)?1(3|8)[0-9]{9}", ErrorMessage = "你填的是中国的手机号码？")]
         [Display(Name = "手机")]
         public string Phone { get; set; }
 
