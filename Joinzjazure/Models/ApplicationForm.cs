@@ -42,7 +42,7 @@ namespace Joinzjazure.Models
         public string Name { get; set; }
 
         [Phone]
-        [RegularExpression(@"(\+86)?1(3|8)[0-9]{9}", ErrorMessage = "你填的是中国的手机号码？")]
+        [RegularExpression(@"(\+86)?1(3|5|8)[0-9]{9}", ErrorMessage = "你填的是中国的手机号码？")]
         [Display(Name = "手机")]
         public string Phone { get; set; }
 
