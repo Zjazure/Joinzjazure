@@ -31,7 +31,6 @@ namespace Joinzjazure.Controllers
             return Json(GetVerificationCode(), JsonRequestBehavior.AllowGet);
         }
 
-        // GET: Home
         public ActionResult Index()
         {
             if (Request.Browser.Browser == "IE" && Request.Browser.MajorVersion <= 8)
@@ -45,8 +44,8 @@ namespace Joinzjazure.Controllers
         public ActionResult Index(ApplicationForm model)
         {
             bool verCorrect = true;
-            if (!ModelState.IsValid
-                || !(verCorrect = CheckVerificationCode(model.VerificationCodeId, model.VerificationCodeAnswer)))
+            if (!(verCorrect = CheckVerificationCode(model.VerificationCodeId, model.VerificationCodeAnswer))
+                || !ModelState.IsValid)
             {
                 if (!verCorrect)
                 {
@@ -54,18 +53,11 @@ namespace Joinzjazure.Controllers
                 }
                 return View(model);
             }
-            try
-            {
-                Task.Run(() =>
+            Task.Run(() =>
                 {
                     var store = new ApplicationFormStore();
                     store.Save(model);
                 });
-            }
-            catch (Exception)
-            {
-                return View();
-            }
             return RedirectToAction("Succeed");
         }
 
@@ -77,7 +69,7 @@ namespace Joinzjazure.Controllers
         [HttpGet]
         public ActionResult VerificationCodeCheck(string verificationCodeAnswer, int verificationCodeId)
         {
-            return Json(CheckVerificationCode(verificationCodeId, verificationCodeAnswer) ? true : false, JsonRequestBehavior.AllowGet);
+            return Json(CheckVerificationCode(verificationCodeId, verificationCodeAnswer), JsonRequestBehavior.AllowGet);
         }
 
         private bool CheckVerificationCode(int verificationCodeId, string verificationCodeAnswer)

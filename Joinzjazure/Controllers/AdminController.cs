@@ -3,6 +3,7 @@ using Joinzjazure.Models;
 using Microsoft.WindowsAzure;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Web.Http;
 
@@ -24,12 +25,7 @@ namespace Joinzjazure.Controllers
 
             var store = new ApplicationFormStore();
             var result = store.GetAll();
-            var list = new List<ApplicationFormViewModel>();
-            foreach (var entity in result)
-            {
-                list.Add(new ApplicationFormViewModel(entity));
-            }
-            return list;
+            return (from e in result select new ApplicationFormViewModel(e)).ToList();
         }
     }
 }
