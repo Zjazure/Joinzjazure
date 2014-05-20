@@ -1,19 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <groups>
   <group id="ProgramGroup" name="程序与移动应用组" value="1">
-    <line text="当前小组负责人：高一(29)班 朱恒成" />
-    <line text="暂时没有小组介绍" />
+    <line text="本系统处于测试阶段，暂时没有小组介绍" />
   </group>
   <group id="VideoGroup" name="视频与多媒体应用组" value="2">
-    <line text="当前小组负责人：高一(15)班 吴非杰" />
-    <line text="暂时没有小组介绍" />
+    <line text="本系统处于测试阶段，暂时没有小组介绍" />
   </group>
   <group id="WebGroup" name="网络与Web应用组" value="4">
-    <line text="当前小组负责人：高一(11)班 梁耕源" />
-    <line text="暂时没有小组介绍" />
+    <line text="本系统处于测试阶段，暂时没有小组介绍" />
   </group>
   <group id="ResourceGroup" name="资源与系统应用组" value="8">
-    <line text="当前小组负责人：高一(07)班 钟子玠" />
-    <line text="暂时没有小组介绍" />
+    <line text="本系统处于测试阶段，暂时没有小组介绍" />
+  </group>
+  <group id="NewsGroup" name="技术资讯与宣传组" value="16">
+    <line text="本系统处于测试阶段，暂时没有小组介绍" />
   </group>
 </groups>
