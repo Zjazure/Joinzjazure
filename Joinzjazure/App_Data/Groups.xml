@@ -1,18 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <groups>
   <group id="ProgramGroup" name="程序与移动应用组" value="1">
-    <line text="本系统处于测试阶段，暂时没有小组介绍" />
+    <line text="想写出高端大气上档次的程序？亦或是制作App？" />
+    <line text="程序与移动应用组，酷炫代码、精美界面、实用App等着你！"/>
   </group>
   <group id="VideoGroup" name="视频与多媒体应用组" value="2">
-    <line text="本系统处于测试阶段，暂时没有小组介绍" />
+    <line text="小组负责人玩命准备中..." />
   </group>
   <group id="WebGroup" name="网络与Web应用组" value="4">
-    <line text="本系统处于测试阶段，暂时没有小组介绍" />
+    <line text="小组负责人玩命准备中..." />
   </group>
   <group id="ResourceGroup" name="资源与系统应用组" value="8">
-    <line text="本系统处于测试阶段，暂时没有小组介绍" />
+    <line text="想学习一些通俗易懂的电脑操作技巧？或想在Internet中找到心仪的资源？" />
+    <line text="加入资源与系统应用组吧，各种电脑使用技巧、互联网资源，通通都是你的啦！"/>
   </group>
   <group id="NewsGroup" name="技术资讯与宣传组" value="16">
-    <line text="本系统处于测试阶段，暂时没有小组介绍" />
+    <line text="小组负责人玩命准备中..." />
   </group>
 </groups>
