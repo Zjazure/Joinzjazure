@@ -184,6 +184,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\GradeYearHelper.cs" />
     <Compile Include="Models\ApplicationForm.cs" />
     <Compile Include="Models\ApplicationFormViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,5 +1,7 @@
 ﻿@model Joinzjazure.Models.ApplicationForm
 
+@using Joinzjazure.Helpers;
+
 @{
     ViewBag.Title = "湛江一中IT社 网络报名系统";
 }
@@ -24,7 +26,7 @@ new { @class = "form-control" })
         <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
             @Html.LabelFor(m => m.Grade)
             <span class="label label-info">必填</span>
-            @Html.DropDownListFor(m => m.Grade, new SelectList(new[] { new { Text = "高一", Value = 1 }, new { Text = "高二", Value = 2 } }, "Value", "Text"),
+            @Html.DropDownListFor(m => m.Grade, new SelectList(new[] { new { Text = "高一", Value = GradeYearHelper.GetYear(1) }, new { Text = "高二", Value = GradeYearHelper.GetYear(2) } }, "Value", "Text"),
 new { @class = "form-control" })
         </div>
 

@@ -28,7 +28,6 @@ namespace Joinzjazure.Models
         public bool Gender { get; set; }
 
         [Required]
-        [Range(1, 2, ErrorMessage = "同学你来错学校了")]
         [Display(Name = "年级")]
         public int Grade { get; set; }
 
