@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <verificationCodes>
   <verificationCode id="1" question="牛顿第二定律（乘积形式）" answer="F=ma" />
-  <verificationCode id="2" question="sin^2 x+cos^2 x=?（a^2表示a的平方）" answer="1" />
+  <verificationCode id="2" question="sin&#178;x+cos&#178;x=?" answer="1" />
   <verificationCode id="3" question="湛江一中电脑室在几楼？（数字）" answer="6" />
   <verificationCode id="4" question="湛江一中有多少所分校（数字）" answer="3" />
   <verificationCode id="5" question="湛江一中校长名字" answer="郑军" />
@@ -22,4 +22,9 @@
   <verificationCode id="20" question="湛江的气候类型为：_____气候" answer="热带季风" />
   <verificationCode id="21" question="RNA的基本单位是" answer="核糖核苷酸" />
   <verificationCode id="22" question="C++函数 const char * hello(){ return __func__; } 的返回值是" answer="hello" />
+  <verificationCode id="23" question="辛亥革命在哪年爆发？" answer="1911" />
+  <verificationCode id="24" question="VB.net中声明抽象类的关键字" answer="MustInherits" />
+  <verificationCode id="25" question="C#中声明抽象类的关键字" answer="abstract" />
+  <verificationCode id="26" question="影响化学平衡常数的因素是" answer="温度" />
+  <verificationCode id="27" question="方程 ax&#178;+bx+c=0 有两个相等的实数根，则 b&#178;-4ac=?" answer="0" />
 </verificationCodes>
