@@ -5,7 +5,9 @@
     <line text="程序与移动应用组，酷炫代码、精美界面、实用App等着你！"/>
   </group>
   <group id="VideoGroup" name="视频与多媒体应用组" value="2">
-    <line text="小组负责人玩命准备中..." />
+    <line text="想制作一部2B恶搞TA的视频吗？想制作一部高端霸气上档次且亮瞎别人24K白金狗眼的微电影么？"/>
+    <line text="只要你回答想，呵呵，no problem，这些愿望都能在视频组实现。"/>
+    <line text="我为视频组代言(ps.视频组火热求包养ing∩ω∩)"/>
   </group>
   <group id="WebGroup" name="网络与Web应用组" value="4">
     <line text="小组负责人玩命准备中..." />
