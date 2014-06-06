@@ -2,6 +2,7 @@
 <groups>
   <group id="ProgramGroup" name="程序与移动应用组" value="1">
     <line text="想写出高端大气上档次的程序？亦或是制作App？" />
+    <line text="花花绿绿的代码，处理海量数据，酷炫的界面，吸引用户的眼球" />
     <line text="程序与移动应用组，酷炫代码、精美界面、实用App等着你！"/>
   </group>
   <group id="VideoGroup" name="视频与多媒体应用组" value="2">
@@ -10,13 +11,15 @@
     <line text="我为视频组代言(ps.视频组火热求包养ing∩ω∩)"/>
   </group>
   <group id="WebGroup" name="网络与Web应用组" value="4">
-    <line text="小组负责人玩命准备中..." />
+    <line text="有一种传说，Ta不叫永远，而是大千互联网。信息时代，谁不曾想过在网络世界里拥有自己的一片世外桃源。"/>
+    <line text="加入IT社网络组，你将可以在互联网横行的世界，打下属于自己的一片天堂。"/>
+    <line text="在这里，亲将可以学到制作基本的网页哦，搭建自己的个人网站、论坛，一起领略与品味形形色色的网络世界的点点滴滴~" />
   </group>
   <group id="ResourceGroup" name="资源与系统应用组" value="8">
     <line text="想学习一些通俗易懂的电脑操作技巧？或想在Internet中找到心仪的资源？" />
     <line text="加入资源与系统应用组吧，各种电脑使用技巧、互联网资源，通通都是你的啦！"/>
   </group>
   <group id="NewsGroup" name="技术资讯与宣传组" value="16">
-    <line text="小组负责人玩命准备中..." />
+    <line text="小组负责人玩命准备中...敬请期待" />
   </group>
 </groups>
