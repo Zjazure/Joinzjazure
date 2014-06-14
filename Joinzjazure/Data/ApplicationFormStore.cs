@@ -20,7 +20,7 @@ namespace Joinzjazure.Data
         public IEnumerable<FormEntity> GetAll()
         {
             var table = GetTable();
-            TableQuery<FormEntity> query = new TableQuery<FormEntity>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.LessThan, "999"));
+            TableQuery<FormEntity> query = new TableQuery<FormEntity>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.GreaterThan, "0"));
             return table.ExecuteQuery(query);
         }
 
