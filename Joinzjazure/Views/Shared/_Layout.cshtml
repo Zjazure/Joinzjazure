@@ -8,17 +8,16 @@
     @System.Web.Optimization.Scripts.Render("~/bundles/jquery")
     @System.Web.Optimization.Scripts.Render("~/bundles/modernizr")
 </head>
-
 <body>
     <div class="container" style="background-color:rgba(255,255,255,0.83)">
         <div class="page-header">
             <h1>湛江一中IT社 网络报名系统</h1>
         </div>
-        <p class="alert alert-info">本系统处于测试阶段，所提交的报名信息仅作测试用途，将会在2014年9月正式上线</p>
+        <p class="alert alert-warning">湛江一中IT社2014招新工作将于2014年7月11日开始，在此之前提交的报名信息将会在7月10日晚上清空，请耐心等待。</p>
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - 湛江一中IT社</p>
+            <p>&copy; 2013 - @DateTime.Now.Year 湛江一中IT社 保留所有权利</p>
             <p>本网站运行于 <a href="http://azure.microsoft.com/en-us/" target="_blank">Microsoft Azure</a> 北京数据中心</p>
         </footer>
     </div>

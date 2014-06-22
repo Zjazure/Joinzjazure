@@ -5,21 +5,23 @@
     <line text="花花绿绿的代码，处理海量数据，酷炫的界面，吸引用户的眼球" />
     <line text="程序与移动应用组，酷炫代码、精美界面、实用App等着你！"/>
   </group>
-  <group id="VideoGroup" name="视频与多媒体应用组" value="2">
+  <group id="NewsGroup" name="设计与宣传组" value="2">
+    <line text="不想折腾奇怪难懂的技术？"/>
+    <line text="没问题，IT社技术设计与宣传组欢迎你。"/>
+    <llne text="如果你喜欢设计，喜欢画图，善于做宣传工作，或是喜欢了解科技行业的咨询，加入我们组吧！"/>
+  </group>
+  <group id="VideoGroup" name="多媒体与视频制作组" value="4">
     <line text="想制作一部2B恶搞TA的视频吗？想制作一部高端霸气上档次且亮瞎别人24K白金狗眼的微电影么？"/>
     <line text="只要你回答想，呵呵，no problem，这些愿望都能在视频组实现。"/>
     <line text="我为视频组代言(ps.视频组火热求包养ing∩ω∩)"/>
   </group>
-  <group id="WebGroup" name="网络与Web应用组" value="4">
+  <group id="WebGroup" name="网络与Web应用组" value="8">
     <line text="有一种传说，Ta不叫永远，而是大千互联网。信息时代，谁不曾想过在网络世界里拥有自己的一片世外桃源。"/>
     <line text="加入IT社网络组，你将可以在互联网横行的世界，打下属于自己的一片天堂。"/>
     <line text="在这里，亲将可以学到制作基本的网页哦，搭建自己的个人网站、论坛，一起领略与品味形形色色的网络世界的点点滴滴~" />
   </group>
-  <group id="ResourceGroup" name="资源与系统应用组" value="8">
+  <group id="ResourceGroup" name="资源与系统应用组" value="16">
     <line text="想学习一些通俗易懂的电脑操作技巧？或想在Internet中找到心仪的资源？" />
     <line text="加入资源与系统应用组吧，各种电脑使用技巧、互联网资源，通通都是你的啦！"/>
-  </group>
-  <group id="NewsGroup" name="技术资讯与宣传组" value="16">
-    <line text="小组负责人玩命准备中...敬请期待" />
   </group>
 </groups>
