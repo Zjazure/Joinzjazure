@@ -9,8 +9,16 @@ namespace Joinzjazure.Helpers
     {
         public static int GetYear(int grade)
         {
-            var fix = DateTime.Now.Month < 7 ? 1 : 0;
-            return DateTime.Now.Year + fix - grade;
+            if (DateTime.Now.Month < 7)
+            {
+                //term 2
+                return DateTime.Now.Year - grade;
+            }
+            else
+            {
+                //trem 1
+                return DateTime.Now.Year - grade + 1;
+            }
         }
     }
 }
