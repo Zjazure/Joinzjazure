@@ -9,8 +9,8 @@ namespace Joinzjazure.Helpers
     {
         public static int GetYear(int grade)
         {
-            var fix = DateTime.Now.Month < 7 ? -2 : -1;
-            return DateTime.Now.Year + fix + grade;
+            var fix = DateTime.Now.Month < 7 ? 1 : 0;
+            return DateTime.Now.Year + fix - grade;
         }
     }
 }
