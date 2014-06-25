@@ -36,12 +36,13 @@ namespace Joinzjazure.Models
         public int Groups { get; set; }
 
         [Required(ErrorMessage = "什么？你是无名氏？")]
-        [MaxLength(10, ErrorMessage = "你名字这么屌，家里知道吗")]
+        [MaxLength(10, ErrorMessage = "名字不要这么长好吗")]
+        [RegularExpression(@"^[\u4e00-\u9fa5]{2,}$", ErrorMessage = "你填的是真实姓名吗")]
         [Display(Name = "姓名")]
         public string Name { get; set; }
 
         [Phone]
-        [RegularExpression(@"(\+86)?1(3|5|8)[0-9]{9}", ErrorMessage = "你填的是中国的手机号码？")]
+        [RegularExpression(@"^(\+86)?1(3|5|8)[0-9]{9}$", ErrorMessage = "你填的是中国的手机号码？")]
         [Display(Name = "手机")]
         public string Phone { get; set; }
 
