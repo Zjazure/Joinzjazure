@@ -58,12 +58,7 @@ namespace Joinzjazure.Controllers
                     var store = new ApplicationFormStore();
                     store.Save(model);
                 });
-            return RedirectToAction("Succeed");
-        }
-
-        public ActionResult Succeed()
-        {
-            return View();
+            return View("Succeed");
         }
 
         [HttpGet]
