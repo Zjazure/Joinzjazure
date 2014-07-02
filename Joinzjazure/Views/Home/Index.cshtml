@@ -38,7 +38,7 @@ new { @class = "form-control" })
                 var g1 = GradeYearHelper.GetYear(1);
                 var g2 = GradeYearHelper.GetYear(2);
             }
-            @Html.DropDownListFor(m => m.Grade, new SelectList(new[] { new { Text = "高一(" + g1.ToString() + "年入学)", Value = g1 }, new { Text = "高二(" + g2.ToString() + "年入学)", Value = g2 } }, "Value", "Text"),
+            @Html.DropDownListFor(m => m.Grade, new SelectList(new[] { new { Text = "新高一(" + g1.ToString() + "年入学)", Value = g1 }, new { Text = "高二(" + g2.ToString() + "年入学)", Value = g2 } }, "Value", "Text"),
 new { @class = "form-control" })
         </div>
 
