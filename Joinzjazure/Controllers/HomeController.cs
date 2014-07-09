@@ -10,11 +10,6 @@ namespace Joinzjazure.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult BrowserIncompatible()
-        {
-            return View();
-        }
-
         public VerificationCode GetVerificationCode()
         {
             var verificationCodes = Joinzjazure.Data.VerificationCodeXmlStore.GetAll();
@@ -35,7 +30,7 @@ namespace Joinzjazure.Controllers
         {
             if (Request.Browser.Browser == "IE" && Request.Browser.MajorVersion <= 8)
             {
-                return RedirectToAction("BrowserIncompatible");
+                return View("BrowserIncompatible");
             }
             return View();
         }
