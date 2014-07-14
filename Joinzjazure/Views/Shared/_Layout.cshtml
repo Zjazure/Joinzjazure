@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>@ViewBag.Title</title>
     @System.Web.Optimization.Styles.Render("~/Content/css")
-    @System.Web.Optimization.Scripts.Render("~/bundles/jquery")
-    @System.Web.Optimization.Scripts.Render("~/bundles/modernizr")
+
 </head>
 <body>
     <div class="container" style="background-color:rgba(255,255,255,0.83)">
@@ -20,7 +19,7 @@
             <p>本网站运行于 <a href="http://azure.microsoft.com/en-us/" target="_blank">Microsoft Azure</a> 北京数据中心</p>
         </footer>
     </div>
-    @System.Web.Optimization.Scripts.Render("~/bundles/val")
-    @System.Web.Optimization.Scripts.Render("~/bundles/bootstrap")
+    @System.Web.Optimization.Scripts.Render("~/bundles/scripts")
+    @RenderSection("scripts", false)
 </body>
 </html>
