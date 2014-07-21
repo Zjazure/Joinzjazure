@@ -19,7 +19,7 @@
   <verificationCode id="17" question="我国照明用电的频率是___Hz" answer="50" />
   <verificationCode id="18" question="北美五大湖中面积最大的是" answer="苏必利尔湖" />
   <verificationCode id="19" question="北美五大湖中完全在美国境内的是" answer="密歇根湖" />
-  <verificationCode id="20" question="湛江的气候类型为：_____气候" answer="热带季风" />
+  <verificationCode id="20" question="亚马逊河流域附近的气候类型为：_____气候" answer="热带雨林" />
   <verificationCode id="21" question="RNA的基本单位是" answer="核糖核苷酸" />
   <verificationCode id="22" question="C++函数 const char * hello(){ return __func__; } 的返回值是" answer="hello" />
   <verificationCode id="23" question="辛亥革命在哪年爆发？" answer="1911" />
