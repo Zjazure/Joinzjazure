@@ -7,6 +7,7 @@ using System.Web;
 
 namespace Joinzjazure.Models
 {
+    [DataContract]
     public class ExcelViewModel
     {
         public ExcelViewModel(FormEntity entity)
