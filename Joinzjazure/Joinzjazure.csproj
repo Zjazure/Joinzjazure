@@ -199,6 +199,7 @@
     <Compile Include="Helpers\GradeYearHelper.cs" />
     <Compile Include="Models\ApplicationForm.cs" />
     <Compile Include="Models\ApplicationFormViewModel.cs" />
+    <Compile Include="Models\ExcelViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

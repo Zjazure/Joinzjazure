@@ -15,8 +15,14 @@ namespace Joinzjazure.Controllers
         [Route("{key}")]
         public List<ApplicationFormViewModel> Get(string key)
         {
+            var result = VerifyAndGetData(key);
+            return (from e in result select new ApplicationFormViewModel(e)).ToList();
+        }
+
+        private static IEnumerable<FormEntity> VerifyAndGetData(string key)
+        {
             var correctKey = CloudConfigurationManager.GetSetting("AdminKey")
-                + DateTime.Now.ToString("yyyyMMdd");
+                            + DateTime.Now.ToString("yyyyMMdd");
 
             if (key != correctKey)
             {
@@ -25,7 +31,14 @@ namespace Joinzjazure.Controllers
 
             var store = new ApplicationFormStore();
             var result = store.GetAll();
-            return (from e in result select new ApplicationFormViewModel(e)).ToList();
+            return result;
+        }
+
+        [Route("Excel/{key}")]
+        public List<ExcelViewModel> GetExcel(string key)
+        {
+            var result = VerifyAndGetData(key);
+            return (from e in result select new ExcelViewModel(e)).ToList();
         }
     }
 }
