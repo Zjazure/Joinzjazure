@@ -28,7 +28,7 @@ namespace Joinzjazure.Controllers
 
         public ActionResult Index()
         {
-            if (Request.Browser.Browser == "IE" && Request.Browser.MajorVersion < 8)
+            if (Request.Browser.Browser == "IE" && Request.Browser.MajorVersion <= 8)
             {
                 return View("BrowserIncompatible");
             }
