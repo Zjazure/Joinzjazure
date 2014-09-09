@@ -20,7 +20,7 @@
     <line text="加入IT社网络组，你将可以在互联网横行的世界，打下属于自己的一片天堂。"/>
     <line text="在这里，亲将可以学到制作基本的网页哦，搭建自己的个人网站、论坛，一起领略与品味形形色色的网络世界的点点滴滴~" />
   </group>
-  <group id="ResourceGroup" name="资源与系统应用组" value="16">
+  <group id="ResourceGroup" name="系统与硬件研究组" value="16">
     <line text="想学习一些通俗易懂的电脑操作技巧？或想在Internet中找到心仪的资源？" />
     <line text="加入资源与系统应用组吧，各种电脑使用技巧、互联网资源，通通都是你的啦！"/>
   </group>

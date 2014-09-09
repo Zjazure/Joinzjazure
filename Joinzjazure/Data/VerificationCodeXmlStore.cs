@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -15,13 +14,12 @@ namespace Joinzjazure.Data
             var xml = File.ReadAllText(path);
 
             var doc = XElement.Parse(xml);
-            var query = from v in doc.Elements("verificationCode")
-                        select new VerificationCode
-                        {
-                            Id = int.Parse(v.Attribute("id").Value),
-                            Question = v.Attribute("question").Value,
-                            Answer = v.Attribute("answer").Value,
-                        };
+            var query = doc.Elements("verificationCode").Select(v => new VerificationCode
+            {
+                Id = int.Parse(v.Attribute("id").Value),
+                Question = v.Attribute("question").Value,
+                Answer = v.Attribute("answer").Value,
+            });
             return query.ToList();
         }
     }

@@ -5,10 +5,6 @@ namespace Joinzjazure.Models
 {
     public class ApplicationForm
     {
-        public ApplicationForm()
-        {
-        }
-
         [Required(ErrorMessage = "填写班级，福利送上门哦")]
         [Range(1, 42, ErrorMessage = "同学你走错班了")]
         [Display(Name = "班级")]

@@ -12,7 +12,7 @@ namespace Joinzjazure.Controllers
     {
         public VerificationCode GetVerificationCode()
         {
-            var verificationCodes = Joinzjazure.Data.VerificationCodeXmlStore.GetAll();
+            var verificationCodes = VerificationCodeXmlStore.GetAll();
             var random = new Random();
             var index = random.Next(0, verificationCodes.Count);
             var code = verificationCodes[index];
@@ -38,7 +38,7 @@ namespace Joinzjazure.Controllers
         [HttpPost]
         public ActionResult Index(ApplicationForm model)
         {
-            bool verCorrect = true;
+            bool verCorrect;
             if (!(verCorrect = CheckVerificationCode(model.VerificationCodeId, model.VerificationCodeAnswer))
                 || !ModelState.IsValid)
             {

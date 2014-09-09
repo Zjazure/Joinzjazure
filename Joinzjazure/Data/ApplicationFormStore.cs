@@ -8,13 +8,13 @@ namespace Joinzjazure.Data
 {
     public class ApplicationFormStore
     {
-        private readonly string connectionString;
-        private readonly string tableName;
+        private readonly string _connectionString;
+        private readonly string _tableName;
 
         public ApplicationFormStore()
         {
-            connectionString = CloudConfigurationManager.GetSetting("StorageConnectionString");
-            tableName = CloudConfigurationManager.GetSetting("AzureTableName");
+            _connectionString = CloudConfigurationManager.GetSetting("StorageConnectionString");
+            _tableName = CloudConfigurationManager.GetSetting("AzureTableName");
         }
 
         public IEnumerable<FormEntity> GetAll()
@@ -38,10 +38,10 @@ namespace Joinzjazure.Data
 #if DEBUG
             var account = CloudStorageAccount.DevelopmentStorageAccount;
 #else
-            var account = CloudStorageAccount.Parse(connectionString);
+            var account = CloudStorageAccount.Parse(_connectionString);
 #endif
             var client = account.CreateCloudTableClient();
-            var table = client.GetTableReference(tableName);
+            var table = client.GetTableReference(_tableName);
             return table;
         }
     }
