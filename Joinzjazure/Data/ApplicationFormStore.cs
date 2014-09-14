@@ -1,8 +1,8 @@
-﻿using Joinzjazure.Models;
+﻿using System.Collections.Generic;
+using Joinzjazure.Models;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
-using System.Collections.Generic;
 
 namespace Joinzjazure.Data
 {
@@ -19,8 +19,10 @@ namespace Joinzjazure.Data
 
         public IEnumerable<FormEntity> GetAll()
         {
-            var table = GetTable();
-            TableQuery<FormEntity> query = new TableQuery<FormEntity>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.GreaterThan, "0"));
+            CloudTable table = GetTable();
+            TableQuery<FormEntity> query =
+                new TableQuery<FormEntity>().Where(TableQuery.GenerateFilterCondition("PartitionKey",
+                    QueryComparisons.GreaterThan, "0"));
             return table.ExecuteQuery(query);
         }
 
@@ -29,7 +31,7 @@ namespace Joinzjazure.Data
             var table = GetTable();
 
             var entity = new FormEntity(form);
-            var operation = TableOperation.InsertOrReplace(entity);
+            TableOperation operation = TableOperation.InsertOrReplace(entity);
             table.Execute(operation);
         }
 

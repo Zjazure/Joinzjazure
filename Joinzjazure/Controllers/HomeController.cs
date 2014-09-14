@@ -64,9 +64,8 @@ namespace Joinzjazure.Controllers
 
         private bool CheckVerificationCode(int verificationCodeId, string verificationCodeAnswer)
         {
-            var query = from q in VerificationCodeXmlStore.GetAll()
-                        where q.Id == verificationCodeId && q.Answer == verificationCodeAnswer
-                        select q;
+            var query = VerificationCodeXmlStore.GetAll()
+                    .Where(q => q.Id == verificationCodeId && q.Answer == verificationCodeAnswer);
             return query.ToList().Count > 0;
         }
     }
