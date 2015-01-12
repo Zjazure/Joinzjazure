@@ -12,8 +12,7 @@ namespace Joinzjazure
                         "~/Scripts/jquery.unobtrusive.js",
                         "~/Scripts/jquery.validate.js",
                         "~/Scripts/jquery.validate.unobtrusive.js",
-                        "~/Scripts/modernizr-*",
-                        "~/Scripts/bootstrap.min.js",
+                        "~/Scripts/bootstrap.js",
                         "~/Scripts/Home.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
