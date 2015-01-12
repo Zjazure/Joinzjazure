@@ -8,16 +8,16 @@ namespace Joinzjazure
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
-                        "~/Scripts/jquery-{version}.min.js",
-                        "~/Scripts/jquery.unobtrusive.min.js",
-                        "~/Scripts/jquery.validate.min.js",
-                        "~/Scripts/jquery.validate.unobtrusive.min.js",
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery.unobtrusive.js",
+                        "~/Scripts/jquery.validate.js",
+                        "~/Scripts/jquery.validate.unobtrusive.js",
                         "~/Scripts/modernizr-*",
                         "~/Scripts/bootstrap.min.js",
                         "~/Scripts/Home.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.cosmo.min.css",
+                      "~/Content/bootstrap.cosmo.css",
                       "~/Content/Site.css"));
 
             // Set EnableOptimizations to false for debugging. For more information,
