@@ -3,27 +3,28 @@ using Joinzjazure.Models;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
+using System.Threading.Tasks;
 
 namespace Joinzjazure.Data
 {
-    public class ApplicationFormStore
+    public class ApplicationFormAzureTableStore : IApplicationFormStore
     {
         private readonly string _connectionString;
         private readonly string _tableName;
 
-        public ApplicationFormStore()
+        public ApplicationFormAzureTableStore()
         {
             _connectionString = CloudConfigurationManager.GetSetting("StorageConnectionString");
             _tableName = CloudConfigurationManager.GetSetting("AzureTableName");
         }
 
-        public IEnumerable<FormEntity> GetAll()
+        public Task<IEnumerable<FormEntity>> GetAllAsync()
         {
             CloudTable table = GetTable();
             TableQuery<FormEntity> query =
                 new TableQuery<FormEntity>().Where(TableQuery.GenerateFilterCondition("PartitionKey",
                     QueryComparisons.GreaterThan, "0"));
-            return table.ExecuteQuery(query);
+            return Task.FromResult(table.ExecuteQuery(query));
         }
 
         public void Save(ApplicationForm form)

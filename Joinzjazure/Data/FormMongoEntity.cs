@@ -1,18 +1,22 @@
 ﻿using Joinzjazure.Models;
-using Microsoft.WindowsAzure.Storage.Table;
+using MongoDB.Bson;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
 namespace Joinzjazure.Data
 {
-    public class FormEntity : TableEntity
+    public class FormMongoEntity
     {
-        public FormEntity()
+        public FormMongoEntity()
         {
         }
 
-        public FormEntity(ApplicationForm form)
+        public FormMongoEntity(ApplicationForm form)
         {
-            RowKey = form.Name;
-            PartitionKey = (form.Grade * 100 + form.Class).ToString();
+            Name = form.Name;
+            Class = (form.Grade * 100 + form.Class);
 
             Gender = form.Gender;
             Email = form.Email;
@@ -23,19 +27,11 @@ namespace Joinzjazure.Data
             Description = form.Description;
         }
 
-        public FormEntity(FormMongoEntity form)
-        {
-            RowKey = form.Name;
-            PartitionKey = form.Class.ToString();
+        public ObjectId Id { get; set; }
 
-            Gender = form.Gender;
-            Email = form.Email;
-            Phone = form.Phone;
-            QQ = form.QQ;
-            Weibo = form.Weibo;
-            Groups = form.Groups;
-            Description = form.Description;
-        }
+        public string Name { get; private set;}
+
+        public int Class { get; private set; }
 
         public string Description { get; set; }
 

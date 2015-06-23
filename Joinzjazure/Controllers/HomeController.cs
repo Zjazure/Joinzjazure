@@ -50,7 +50,7 @@ namespace Joinzjazure.Controllers
             }
             Task.Run(() =>
                 {
-                    var store = new ApplicationFormStore();
+                    var store = StoreFactory.GetStore();
                     store.Save(model);
                 });
             return View("Succeed");
