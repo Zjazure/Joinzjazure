@@ -1,6 +1,6 @@
 ﻿using Joinzjazure.Data;
 using Joinzjazure.Models;
-using Microsoft.WindowsAzure;
+using Microsoft.Azure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
