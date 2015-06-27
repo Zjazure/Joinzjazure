@@ -1,9 +1,4 @@
 ﻿using Joinzjazure.Models;
-using MongoDB.Bson;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Joinzjazure.Data
 {
@@ -27,9 +22,9 @@ namespace Joinzjazure.Data
             Description = form.Description;
         }
 
-        public ObjectId Id { get; set; }
+        public string Id => Class.ToString() + Name;
 
-        public string Name { get; private set;}
+        public string Name { get; private set; }
 
         public int Class { get; private set; }
 

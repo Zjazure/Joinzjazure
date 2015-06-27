@@ -28,8 +28,13 @@ namespace Joinzjazure.Data
 
         public async void Save(ApplicationForm form)
         {
+            var fme = new FormMongoEntity(form);
             var collectiuon = GetCollection();
-            await collectiuon.InsertOneAsync(new FormMongoEntity(form));
+            await collectiuon.FindOneAndReplaceAsync<FormMongoEntity>(f => f.Name == form.Name && f.Class == fme.Class,
+                fme, new FindOneAndReplaceOptions<FormMongoEntity, FormMongoEntity>
+                {
+                    IsUpsert = true,
+                });
         }
     }
 }
