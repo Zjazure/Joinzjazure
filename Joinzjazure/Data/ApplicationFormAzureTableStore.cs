@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Joinzjazure.Models;
-using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 using System.Threading.Tasks;
+using Microsoft.Azure;
 
 namespace Joinzjazure.Data
 {
