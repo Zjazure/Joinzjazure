@@ -22,7 +22,7 @@ namespace Joinzjazure.Data
             Description = form.Description;
         }
 
-        public string Id => Class.ToString() + Name;
+        public string Id { get { return Class.ToString() + Name; } }
 
         public string Name { get; private set; }
 
