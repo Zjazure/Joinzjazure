@@ -156,6 +156,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Groups.xml" />
+    <Content Include="Content\Pictures\PIC1.jpg" />
+    <Content Include="Content\Pictures\PIC2.png" />
+    <Content Include="Content\Pictures\PIC3.png" />
+    <Content Include="Content\Pictures\PIC4.png" />
     <Content Include="App_Data\VerificationCodes.xml" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap.cosmo.css" />
@@ -199,6 +203,7 @@
     <Compile Include="Data\GroupEntity.cs" />
     <Compile Include="Data\GroupXmlStore.cs" />
     <Compile Include="Data\IApplicationFormStore.cs" />
+    <Compile Include="Data\RandomEggPictureStore.cs" />
     <Compile Include="Data\StoreFactory.cs" />
     <Compile Include="Data\VerificationCode.cs" />
     <Compile Include="Data\VerificationCodeXmlStore.cs" />
@@ -216,6 +221,7 @@
     <Content Include="packages.config" />
     <Content Include="Views\Home\BrowserIncompatible.cshtml" />
     <Content Include="Views\Home\Succeed.cshtml" />
+    <Content Include="Views\Home\RandomEgg.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

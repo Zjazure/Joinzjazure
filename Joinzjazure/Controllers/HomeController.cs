@@ -26,6 +26,11 @@ namespace Joinzjazure.Controllers
             return Json(GetVerificationCode(), JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult RandomEgg()
+        {
+            return View();
+        }
+
         public ActionResult Index()
         {
             if (Request.Browser.Browser == "IE" && Request.Browser.MajorVersion <= 8)
