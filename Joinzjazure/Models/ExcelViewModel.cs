@@ -16,8 +16,6 @@ namespace Joinzjazure.Models
             QQ = entity.QQ;
             Weibo = entity.Weibo;
             Description = entity.Description;
-            Timestamp = entity.Timestamp.DateTime;
-
             Name = entity.RowKey;
             Class = int.Parse(entity.PartitionKey) % 100;
             Grade = int.Parse(entity.PartitionKey) / 100;
@@ -54,9 +52,7 @@ namespace Joinzjazure.Models
         [DataMember]
         public string QQ { get; set; }
 
-        [DataMember]
-        public DateTime Timestamp { get; set; }
-
+        
         [DataMember]
         public string Weibo { get; set; }
     }
