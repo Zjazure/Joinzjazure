@@ -1,0 +1,20 @@
+﻿@media (min-width: 768px) {
+    body {
+        background-image: url(Images/vs.gif);
+        background-repeat:no-repeat;
+        background-size:cover;
+    }
+}
+
+.browser-logo {
+    width: 120px;
+    align-self: center;
+}
+
+.browser-logo-link {
+    align-self: center;
+}
+
+body,h1,h4{
+    font-family: 'Microsoft YaHei UI' !important;
+}

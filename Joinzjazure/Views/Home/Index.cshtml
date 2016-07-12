@@ -67,6 +67,7 @@ new { @class = "form-control" })
             {
                 <div class="panel panel-primary">
                     <div class="panel-heading">
+
                         <h4 class="panel-title">
                             <input type="checkbox" id="@g.Id" name="@g.Id" value="@g.Value" onclick="handleCheck('#@g.Id',@g.Value)" />
                             <a data-toggle="collapse" class="info" data-parent="#accordion" href="@string.Format("#collapse{0}", @g.Id)">@g.Name</a>
