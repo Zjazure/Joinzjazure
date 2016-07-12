@@ -11,6 +11,7 @@
     <?php
     require("RenderScripts.php");
     require("xmlparser.php");
+	require("getq.php");
     require("Main3.php");
     ?>
 
@@ -51,16 +52,13 @@
         })
 
 
-    $("#RefreshQ").click(
-        function rs()
-    {
-        <?php $QuestionCode = rand(0,26);
-        unlink("QuestionAnswer.txt");
-        getQuestion($VerificationCodes,$QuestionCode);
-        ?>
-        document.getElementById('question').innerHTML = "<?php echo'<p id=\'question\'>'.$layout.'</p>';?>"
-    }
-    )
+    $("#RefreshQ").click(function(){
+		$.get("getq.php",{
+			rand : "yes"
+			},function(data,textStatus){
+			$("#question").html(data);
+		});
+	});
 
 
 
