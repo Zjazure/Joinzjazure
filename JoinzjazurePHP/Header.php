@@ -15,7 +15,7 @@
     ?>
 
 <script type="text/javascript">
-    function(){
+    (function(){
         $("#checkHandler").validate( {
             rules: {
 
@@ -39,7 +39,7 @@
                         remote: "请输入VerificationCodeAnswer，remote",
                     }
                 }
-            }
+            },
             submitHandler:function(form)
             {
                 alert("提交");
@@ -48,7 +48,7 @@
         }
 
         );
-        }
+        })
 
 
     $("#RefreshQ").click(
