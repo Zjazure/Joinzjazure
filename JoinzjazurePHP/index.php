@@ -1,3 +1,8 @@
+<?php
+require("header.php");
+require("xmlparser.php");
+require("getq.php");
+?>
 <body>
 <div class="container" style="background-color:rgba(255,255,255,0.83)">
     <div class="page-header">
@@ -54,14 +59,12 @@
         <input data-val="true" data-val-number="The field 小组 must be a number." data-val-required="请至少选择一个小组" id="Groups" name="Groups" type="hidden" value="0">
         <div class="panel-group">
 <?php
-            $Groups = simplexml_load_file("XMLData/Groups.xml");
-            $VerificationCodes = simplexml_load_file("XMLData/VerificationCodes.xml");
             foreach ($Groups as $GDF)
             {
                 echo "<div class='panel panel-primary'>
                 <div class='panel-heading'>
                     <h4 class='panel-title'>";
-                echo "<input type='checkbox' id='".$GDF->attributes()->id."' name='counter[]' value='".$GDF->attributes()->name."' onclick='handleCheck('#".$GDF->attributes()->name."',1)'>
+                echo "<input type='checkbox' id='".$GDF->attributes()->id."' name='counter[]' value='".$GDF->attributes()->name."'>
                         <a data-toggle='collapse' class='info collapsed' data-parent='#accordion' href='#collapse".$GDF->attributes()->name."' aria-expanded='false'>".$GDF->attributes()->name."</a>
                     </h4>
                 </div>
@@ -84,8 +87,6 @@
             <span class="field-validation-valid text-warning" data-valmsg-for="Groups" data-valmsg-replace="true"></span>
         </div>
     </div>
-
-
 
     <div class="row">
         <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
@@ -135,11 +136,8 @@
         <button id="RefreshQ" type="button" class="btn btn-sm btn-link">换个问题</button>
         <p id="ValQ"></p>
 
-
         <button type="submit" class="btn btn-info">提交报名表</button>
         <button type="reset" class="btn btn-link">重新填写</button>
-
-
     </div>
 </form>
-
+<?php require("footer.php");?>
