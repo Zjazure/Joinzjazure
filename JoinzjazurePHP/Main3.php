@@ -124,21 +124,9 @@
     <div class="form-group">
         <label>验证码</label>
         <?php
-
-        function getQuestion($VerificationCodes,$QuestionCode)
-        {
-            global $layout;
-            $layout = $VerificationCodes->verificationCode[$QuestionCode]->attributes()->question;
-            $fp1 = fopen("QuestionAnswer.txt", "w+");
-            $CorrectAnswer = $VerificationCodes->verificationCode[$QuestionCode]->attributes()->answer;
-            fwrite($fp1,$CorrectAnswer);
-            fclose($fp1);
-        }
         $QuestionCode = rand(0,26);
         getQuestion($VerificationCodes,$QuestionCode);
         echo "<p id='question'>".$GLOBALS['layout']."</p>";
-
-
         ?>
 
         <input class="form-control text-box single-line" data-val="true" data-val-remote="验证码错误" data-val-remote-url="AnswerHandler.php" data-val-required="怎么可以不填验证码呢" id="VerificationCodeAnswer" name="VerificationCodeAnswer" type="text" value="">
