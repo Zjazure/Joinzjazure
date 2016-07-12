@@ -17,7 +17,7 @@
 $db_host = 'localhost';
 $db_name = 'joinzjazure';
 $db_user = 'root';
-$db_pwd = 'winglims';
+$db_pwd = 'root';
 
 $mysqli = mysqli_connect($db_host, $db_user, $db_pwd, $db_name);
 if (!$mysqli)
