@@ -126,6 +126,9 @@ require("getq.php");
         <label>验证码</label>
         <?php
         $QuestionCode = rand(0,26);
+        $fpRandomCode = fopen("Code.txt","w+");
+        fwrite($fpRandomCode,$QuestionCode);
+        fclose($fpRandomCode);
         getQuestion($VerificationCodes,$QuestionCode);
         echo "<p id='question'>".$GLOBALS['layout']."</p>";
         ?>
