@@ -39,8 +39,8 @@ require("getq.php");
 
 
             <select class="form-control valid" data-val="true" data-val-number="The field 年级 must be a number." data-val-required="The 年级 field is required." id="Grade" name="Grade" aria-required="true" aria-invalid="false" aria-describedby="Grade-error">
-                <option value="2017">高一(2017年入学)</option>
-                <option value="2016">高二(2016年入学)</option>
+                <option value="<?php echo $grade1?>">高一(<?php echo $grade1?>年入学)</option>
+                <option value="<?php echo $grade2?>">高二(<?php echo $grade2?>年入学)</option>
             </select>
         </div>
         <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
