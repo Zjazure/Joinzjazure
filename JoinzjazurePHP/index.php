@@ -1,5 +1,5 @@
 <?php
-require("header.php");
+require("Header.php");
 require("xmlparser.php");
 require("getq.php");
 ?>
@@ -125,20 +125,16 @@ require("getq.php");
     <div class="form-group">
         <label>验证码</label>
         <?php
+        global $QuestionCode;
         $QuestionCode = rand(0,26);
-        $fpRandomCode = fopen("Code.txt","w+");
-        fwrite($fpRandomCode,$QuestionCode);
-        fclose($fpRandomCode);
         getQuestion($VerificationCodes,$QuestionCode);
+        $_SESSION['vericode'] = $QuestionCode;
         echo "<p id='question'>".$GLOBALS['layout']."</p>";
         ?>
-
         <input class="form-control text-box single-line" data-val="true" data-val-remote="验证码错误" data-val-remote-url="AnswerHandler.php" data-val-required="怎么可以不填验证码呢" id="VerificationCodeAnswer" name="VerificationCodeAnswer" type="text" value="">
         <input class="form-control text-box single-line" data-val="true" data-val-remote-url="AnswerHandler.php" id="VerificationPost" name="VerificationPost" type="text" value="<?php echo $QuestionCode;?>" style="display: none">
         <span class="field-validation-valid text-warning" data-valmsg-for="VerificationCodeAnswer" data-valmsg-replace="true"></span>
         <button id="RefreshQ" type="button" class="btn btn-sm btn-link">换个问题</button>
-        <p id="ValQ"></p>
-
         <button type="submit" class="btn btn-info">提交报名表</button>
         <button type="reset" class="btn btn-link">重新填写</button>
     </div>

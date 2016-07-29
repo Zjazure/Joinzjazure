@@ -1,5 +1,5 @@
 (function(){
-        $("#checkHandler").validate( {
+    $("#checkHandler").validate( {
             rules: {
                 VerificationCodeAnswer: {
                     required: true,
@@ -10,33 +10,37 @@
                             VerificationCodeAnswer: function () {
                                 return $("#VerificationCodeAnswer").val();
                             }
+
                         }
                     }
 
                 }
-			},
 
-                messages: {
-                    VerificationCodeAnswer: {
-                        required: "«Î ‰»ÎVerificationCodeAnswer",
-                        remote: "«Î ‰»ÎVerificationCodeAnswer£¨remote",
-                    }
-                },
-            
+
+
+            },
+
+
+
             submitHandler:function(form)
             {
                 form.submit();
             }
         }
 
-        );
-        });
+    );
+});
 
 
-    $("#RefreshQ").click(function(){
+$("#RefreshQ").click(function(){
+
 		$.get("getq.php",{
 			rand : "yes"
+
 			},function(data,textStatus){
+
 			$("#question").html(data);
+
+
 		});
 	});
