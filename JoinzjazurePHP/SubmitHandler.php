@@ -13,7 +13,7 @@
     
 
 <?php
-
+session_start();
 $db_host = 'localhost';
 $db_name = 'joinzjazure';
 $db_user = 'root';
@@ -44,8 +44,7 @@ else{
 $sql = "INSERT INTO newmembers (Name,Gender,Grade,Class,GroupName,Email,Phone,QQ,Weibo,Description) VALUE ('$_POST[Name]','$_POST[Gender]','$_POST[Grade]','$_POST[Class]','$TotalGroup','$_POST[Email]','$_POST[Phone]','$_POST[QQ]','$_POST[Weibo]','$_POST[Description]')";
 $result = $mysqli->query($sql);
 $mysqli->close();
-unlink("QuestionAnswer.txt");
-unlink("GroupTemp.txt");
+session_destroy();
 require("footer.php");
 ?>
 </div> 

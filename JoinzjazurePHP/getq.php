@@ -1,21 +1,18 @@
-﻿<?php 
-require("xmlparser.php");
+﻿<?php
+session_start();
+$Groups = simplexml_load_file("XMLData/Groups.xml");
+$VerificationCodes = simplexml_load_file("XMLData/VerificationCodes.xml");
 function getQuestion($VerificationCodes,$QuestionCode)
         {
 
             global $layout;
+
             $layout = $VerificationCodes->verificationCode[$QuestionCode]->attributes()->question;
-            $fp1 = fopen("QuestionAnswer.txt", "w+");
             $CorrectAnswer = $VerificationCodes->verificationCode[$QuestionCode]->attributes()->answer;
-            fwrite($fp1,$CorrectAnswer);
-            fclose($fp1);
 			return $layout;
         };
 if(isset($_GET['rand'])) {
-$QuestionCode = rand(0,26);
-unlink("QuestionAnswer.txt");
-    $fpReadLastCode = fopen("Code.txt","w+");
-    $lastcode = fgets($fpReadLastCode);
+    $lastcode = $_SESSION['vericode'];
     check:
     $Newcode = rand(0,26);
     if ($Newcode == $lastcode)
@@ -24,8 +21,8 @@ unlink("QuestionAnswer.txt");
     }else
     {
         $getq = getQuestion($VerificationCodes,$Newcode);
-        fwrite($fpReadLastCode,$Newcode);
-        fclose($fpReadLastCode);
+        unset($_SESSION['vericode']);
+        $_SESSION['vericode'] = $Newcode;
 
     }
 echo $getq;
