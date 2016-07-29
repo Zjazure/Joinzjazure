@@ -27,15 +27,13 @@ if (!$mysqli)
 $mysqli->set_charset("utf8");
 if($_POST['counter'])
 {
-    $fpGroup = fopen("GroupTemp.txt","a+");
+    $GroupNameCounter = '';
     foreach ($_POST['counter'] as $stringcounter)
     {
-        fwrite($fpGroup,$stringcounter.",");
+        $GroupNameCounter = $GroupNameCounter.' '.$stringcounter;
 
     }
-    fclose($fpGroup);
-    $getcontent = fopen("GroupTemp.txt","r");
-    $TotalGroup = fgets($getcontent);
+$TotalGroup = $GroupNameCounter;
 }
 else{
     $TotalGroup = "None";
