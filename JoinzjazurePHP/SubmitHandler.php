@@ -1,4 +1,4 @@
-<?php require("header.php");?>
+<?php require("Header.php");?>
 <body>
     <div class="container" style="background-color:rgba(255,255,255,0.83)">
         <div class="page-header">
