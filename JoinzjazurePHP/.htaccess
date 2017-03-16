@@ -1,0 +1,4 @@
+<FilesMatch \.(?i:xml|json)$>
+  Order allow,deny
+  Deny from all
+</FilesMatch> 
