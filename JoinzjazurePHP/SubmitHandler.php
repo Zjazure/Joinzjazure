@@ -37,12 +37,23 @@ function table_exist_or_create($tablename,$dbname,$mysqli)
     else
         return true;
 }
-
+function load_json_config()
+{
+    if(file_exists("config.json")){ 
+        $content = file_get_contents("config.json"); 
+        $json = json_decode($content,true); 
+    }
+    return $json;
+}
 if(session_status()!=PHP_SESSION_ACTIVE)session_start();
-$db_host = 'localhost';
-$db_name = 'joinzjazure';
-$db_user = 'root';
-$db_pwd = 'root';
+
+$conf = load_json_config();
+$db_host = $conf["database_host"];
+$db_name = $conf["database_name"];
+$db_user = $conf["database_user"];
+$db_pwd = $conf["database_pass"];
+$db_tbl = $conf["database_table"];
+
 
 $mysqli = mysqli_connect($db_host, $db_user, $db_pwd, $db_name);
 if (!$mysqli)
@@ -50,7 +61,7 @@ if (!$mysqli)
     echo mysqli_connect_error();
 }
 $mysqli->set_charset("utf8");
-if(!table_exist_or_create("newmembers",$db_name,$mysqli)) die("Failed to connect to specified table");
+if(!table_exist_or_create($db_tbl,$db_name,$mysqli)) die("Failed to connect to specified table");
 
 
 if($_POST['counter'])
@@ -67,7 +78,7 @@ else{
     $TotalGroup = "None";
 }
 
-$sql = "INSERT INTO newmembers (Name,Gender,Grade,Class,GroupName,Email,Phone,QQ,Weibo,Description) VALUES ('$_POST[Name]','$_POST[Gender]','$_POST[Grade]','$_POST[Class]','$TotalGroup','$_POST[Email]','$_POST[Phone]','$_POST[QQ]','$_POST[Weibo]','$_POST[Description]')";
+$sql = "INSERT INTO $db_tbl (Name,Gender,Grade,Class,GroupName,Email,Phone,QQ,Weibo,Description) VALUES ('$_POST[Name]','$_POST[Gender]','$_POST[Grade]','$_POST[Class]','$TotalGroup','$_POST[Email]','$_POST[Phone]','$_POST[QQ]','$_POST[Weibo]','$_POST[Description]')";
 $result = $mysqli->query($sql);
 if(!$result) die("Failed to insert");
 $mysqli->close();

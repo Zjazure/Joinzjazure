@@ -1,0 +1,7 @@
+{
+    "database_host":"localhost",
+    "database_name":"joinzjazure",
+    "database_table":"newmembers",
+    "database_user":"root",
+    "database_pass":""
+}
