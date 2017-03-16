@@ -13,7 +13,32 @@
     
 
 <?php
-session_start();
+function table_exist_or_create($tablename,$dbname,$mysqli)
+{
+    $sql = "select * from information_schema.TABLES where table_schema='$dbname' and table_name='$tablename'";
+    $result = $mysqli->query($sql);
+    if($result->num_rows==0)
+    {
+        $sql = "
+        CREATE TABLE `joinzjazure`.`newmembers` (
+        `Name` VARCHAR(45) NOT NULL,
+        `Gender` VARCHAR(45) NOT NULL,
+        `Grade` VARCHAR(45) NOT NULL,
+        `Class` VARCHAR(45) NOT NULL,
+        `GroupName` VARCHAR(45) NOT NULL,
+        `Email` VARCHAR(45) NOT NULL,
+        `Phone` VARCHAR(45) NOT NULL,
+        `QQ` VARCHAR(45) NOT NULL,
+        `Weibo` VARCHAR(45) NOT NULL,
+        `Description` VARCHAR(45) NOT NULL);
+        ";
+        return $mysqli->query($sql);
+    }
+    else
+        return true;
+}
+
+if(session_status()!=PHP_SESSION_ACTIVE)session_start();
 $db_host = 'localhost';
 $db_name = 'joinzjazure';
 $db_user = 'root';
@@ -25,6 +50,9 @@ if (!$mysqli)
     echo mysqli_connect_error();
 }
 $mysqli->set_charset("utf8");
+if(!table_exist_or_create("newmembers",$db_name,$mysqli)) die("Failed to connect to specified table");
+
+
 if($_POST['counter'])
 {
     $GroupNameCounter = '';
@@ -39,8 +67,9 @@ else{
     $TotalGroup = "None";
 }
 
-$sql = "INSERT INTO newmembers (Name,Gender,Grade,Class,GroupName,Email,Phone,QQ,Weibo,Description) VALUE ('$_POST[Name]','$_POST[Gender]','$_POST[Grade]','$_POST[Class]','$TotalGroup','$_POST[Email]','$_POST[Phone]','$_POST[QQ]','$_POST[Weibo]','$_POST[Description]')";
+$sql = "INSERT INTO newmembers (Name,Gender,Grade,Class,GroupName,Email,Phone,QQ,Weibo,Description) VALUES ('$_POST[Name]','$_POST[Gender]','$_POST[Grade]','$_POST[Class]','$TotalGroup','$_POST[Email]','$_POST[Phone]','$_POST[QQ]','$_POST[Weibo]','$_POST[Description]')";
 $result = $mysqli->query($sql);
+if(!$result) die("Failed to insert");
 $mysqli->close();
 session_destroy();
 require("footer.php");

@@ -1,4 +1,5 @@
 ﻿<?php
+if(session_status()!=PHP_SESSION_ACTIVE)session_start();
 $Groups = simplexml_load_file("XMLData/Groups.xml");
 $VerificationCodes = simplexml_load_file("XMLData/VerificationCodes.xml");
 function getQuestion($VerificationCodes,$QuestionCode)
