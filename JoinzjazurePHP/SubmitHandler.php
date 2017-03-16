@@ -20,7 +20,7 @@ function table_exist_or_create($tablename,$dbname,$mysqli)
     if($result->num_rows==0)
     {
         $sql = "
-        CREATE TABLE `joinzjazure`.`newmembers` (
+        CREATE TABLE `$dbname`.`$tablename` (
         `Name` VARCHAR(45) NOT NULL,
         `Gender` VARCHAR(45) NOT NULL,
         `Grade` VARCHAR(45) NOT NULL,
