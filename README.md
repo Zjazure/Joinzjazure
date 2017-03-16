@@ -8,6 +8,12 @@
 
 3. 本程序使用MySQL数据库系统。由于本程序会在数据表不存在时创建表，设置用户时，请额外给该用户添加mysql数据库的SELECT权限。
 
+## 安全
+
+* 本程序自带有适用于Apache的.htaccess文件以阻止恶意用户访问XMLData目录下的xml文件和config.json，请打开Apache的重写功能。
+
+* 使用Nginx或其他Web服务器的用户请自行添加规则屏蔽XMLData目录的xml和config.json。
+
 ## 鸣谢
 * 湛江一中IT社网络报名系统 - ASP.Net MVC版 作者：Henrycobaltech
 
