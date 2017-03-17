@@ -1,7 +1,6 @@
 <?php
 
 require("header.php");
-require("xmlparser.php");
 require(__DIR__."/class/verification-code.class.php");
 require(__DIR__."/class/groups.class.php");
 ?>
@@ -60,32 +59,26 @@ require(__DIR__."/class/groups.class.php");
         <span class="label label-info">点击小组名称查看小组介绍</span>
         <input data-val="true" data-val-number="The field 小组 must be a number." data-val-required="请至少选择一个小组" id="Groups" name="Groups" type="hidden" value="0">
         <div class="panel-group">
-<?php
-            foreach ($Groups as $GDF)
-            {
-                echo "<div class='panel panel-primary'>
+        <?php
+        foreach (group::get_groups() as $group)
+        {
+            ?>
+            <div class='panel panel-primary'>
                 <div class='panel-heading'>
-                    <h4 class='panel-title'>";
-                echo "<input type='checkbox' id='".$GDF->attributes()->id."' name='counter[]' value='".$GDF->attributes()->name."'>
-                        <a data-toggle='collapse' class='info collapsed' data-parent='#accordion' href='#collapse".$GDF->attributes()->name."' aria-expanded='false'>".$GDF->attributes()->name."</a>
+                    <h4 class='panel-title'>
+                        <input type='checkbox' id='<?php echo($group->id); ?>' name='counter[]' value='<?php echo($group->name); ?>'/>
+                        <a data-toggle='collapse' class='info collapsed' data-parent='#accordion' href='#collapse<?php echo($group->name);?>' aria-expanded='false'><?php echo($group->name);?></a>
                     </h4>
                 </div>
-                ";
-                echo "<div id='collapse".$GDF->attributes()->name."' class='panel-collapse collapse' aria-expanded='false' style='height: 0px;'>
+                <div id='collapse<?php echo($group->name);?>' class='panel-collapse collapse' aria-expanded='false' style='height: 0px;'>
                     <div class='panel-body'>
-                        ";
-            foreach ($GDF as $GDS)
-            {
-
-                echo $GDS->attributes()."<br>";
-            }
-   echo "
+                        <?php echo(str_ireplace("\n","<br/>",$group->description)); ?>
                     </div>
                 </div>
-            </div>";
-            }
-?>
-
+            </div>
+           <?php
+        }
+        ?>
             <span class="field-validation-valid text-warning" data-valmsg-for="Groups" data-valmsg-replace="true"></span>
         </div>
     </div>
