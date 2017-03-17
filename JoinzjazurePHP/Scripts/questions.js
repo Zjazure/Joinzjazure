@@ -4,24 +4,16 @@
                 VerificationCodeAnswer: {
                     required: true,
                     remote: {
-                        url: "AnswerHandler.php",
-                        type: "post",
-                        data: {
+                        url: "verification-code.php",
+                        type: "get",
+                        func: "answer",
                             VerificationCodeAnswer: function () {
-                                return $("#VerificationCodeAnswer").val();
+                            data: {return $("#VerificationCodeAnswer").val();}
                             }
-
-                        }
                     }
 
                 }
-
-
-
             },
-
-
-
             submitHandler:function(form)
             {
                 form.submit();
@@ -30,17 +22,9 @@
 
     );
 });
-
-
 $("#RefreshQ").click(function(){
-
-		$.get("getq.php",{
-			rand : "yes"
-
-			},function(data,textStatus){
-
-			$("#question").html(data);
-
-
-		});
+	$.get("verification-code.php",{func:"question"},function(data,textStatus){
+		$("#question").html(data);
 	});
+});
+$("#RefreshQ").click();

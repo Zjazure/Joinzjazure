@@ -1,7 +1,9 @@
 <?php
+
 require("Header.php");
 require("xmlparser.php");
-require("getq.php");
+require(__DIR__."/class/verification-code.class.php");
+require(__DIR__."/class/groups.class.php");
 ?>
 <body>
 <div class="container" style="background-color:rgba(255,255,255,0.83)">
@@ -123,15 +125,9 @@ require("getq.php");
     </div>
 
     <div class="form-group">
-        <label>验证码</label>
-        <?php
-        global $QuestionCode;
-        $QuestionCode = rand(0,26);
-        getQuestion($VerificationCodes,$QuestionCode);
-        $_SESSION['vericode'] = $QuestionCode;
-        echo "<p id='question'>".$GLOBALS['layout']."</p>";
-        ?>
-        <input class="form-control text-box single-line" data-val="true" data-val-remote="验证码错误" data-val-remote-url="AnswerHandler.php" data-val-required="怎么可以不填验证码呢" id="VerificationCodeAnswer" name="VerificationCodeAnswer" type="text" value="">
+        <label>验证码</label>         
+        <p id='question'></p>
+        <input class="form-control text-box single-line" data-val="true" data-val-remote="验证码错误" data-val-remote-url="verification-code.php" data-val-required="怎么可以不填验证码呢" id="VerificationCodeAnswer" name="VerificationCodeAnswer" type="text" value="">
         <input class="form-control text-box single-line" data-val="true" data-val-remote-url="AnswerHandler.php" id="VerificationPost" name="VerificationPost" type="text" value="<?php echo $QuestionCode;?>" style="display: none">
         <span class="field-validation-valid text-warning" data-valmsg-for="VerificationCodeAnswer" data-valmsg-replace="true"></span>
         <button id="RefreshQ" type="button" class="btn btn-sm btn-link">换个问题</button>

@@ -5,5 +5,8 @@
 	<script src="Scripts/jquery.validate.js"></script>
 	<script src="Scripts/jquery.validate.unobtrusive.js"></script>
 	<script src="Scripts/questions.js"></script>
+	<script>
+		
+	</script>
 </footer>
 </html>

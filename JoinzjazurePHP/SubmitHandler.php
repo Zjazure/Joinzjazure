@@ -82,7 +82,6 @@ $sql = "INSERT INTO $db_tbl (Name,Gender,Grade,Class,GroupName,Email,Phone,QQ,We
 $result = $mysqli->query($sql);
 if(!$result) die("Failed to insert");
 $mysqli->close();
-session_destroy();
 require("footer.php");
 ?>
 </div> 
