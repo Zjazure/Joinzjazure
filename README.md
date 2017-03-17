@@ -8,6 +8,9 @@
 
 3. 本程序使用MySQL数据库系统。由于本程序会在数据表不存在时创建表，设置用户时，请额外给该用户添加mysql数据库的SELECT权限。
 
+4. 验证码、小组信息和首页提交页面提示信息都在JsonData目录下的相关文件内。
+
+
 ## 安全
 
 * 本程序自带有适用于Apache的.htaccess文件以阻止恶意用户访问XMLData目录下的xml文件和config.json，请打开Apache的重写功能。
