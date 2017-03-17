@@ -3,6 +3,9 @@
 require("header.php");
 require(__DIR__."/class/verification-code.class.php");
 require(__DIR__."/class/groups.class.php");
+
+$anouncements = json_decode(file_get_contents(__DIR__."/JsonData/Anouncement.json"),true);
+
 ?>
 <body>
 
@@ -12,26 +15,21 @@ require(__DIR__."/class/groups.class.php");
     <div class="page-header">
         <h1>湛江一中IT社 网络报名系统</h1>
     </div>
-    <h2 class="alert alert-success">谢谢！报名信息已成功提交</h2>
-    <h3>湛江一中IT社QQ群: 294013796</h3>
-    <p>加入时请注明班级，姓名，防止被拒绝</p>
-    <h3>湛江一中IT社微博: <a href="http://weibo.com/zjazure" target="_blank">@湛江一中IT社</a></h3>
-    <h3>2014年社团招新由湛江一中社团部统一进行</h3>
-    <h3>面试与活动的通知请密切关注社团部通知以及我们的微博</h3>
+    <?php if(isset($anouncements["Submit"]))echo($anouncements["Submit"]) ?>
+    
 <?php } ?>
 <?php if($_SERVER['REQUEST_METHOD']=='GET'){ ?>
 <div class="container" style="background-color:rgba(255,255,255,0.83)">
     <div class="page-header">
         <h1>湛江一中IT社 网络报名系统</h1>
     </div>
-<div class="alert alert-info">
-    <p>IT社设有五个小组，我们什么都玩=  =  。欢迎技术控，技术宅，技术X (●'◡'●)</p>
-    <p>除组员外，我们还需要社长一名，副社长两名，小组负责人各两名。</p>
-    <p>面试通过率估计值为80%</p>
-    <p>招新原则：兴趣第一，基础第二</p>
-    <p>加入我们吧！</p>
-</div>
-
+<?php if(isset($anouncements["Index"])&&$anouncements["Index"]!="")
+{
+    echo("<div class=\"alert alert-info\">");
+    echo($anouncements["Index"]);
+    echo("</div>");
+}
+?>
 <form id="checkHandler" name="checkHandler" method="post">
     <div class="row">
         <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
