@@ -1,6 +1,6 @@
 <?php
 
-require("Header.php");
+require("header.php");
 require("xmlparser.php");
 require(__DIR__."/class/verification-code.class.php");
 require(__DIR__."/class/groups.class.php");
