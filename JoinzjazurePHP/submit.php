@@ -1,16 +1,4 @@
-<?php require("header.php");?>
-<body>
-    <div class="container" style="background-color:rgba(255,255,255,0.83)">
-        <div class="page-header">
-            <h1>湛江一中IT社 网络报名系统</h1>
-        </div>
-		<h2 class="alert alert-success">谢谢！报名信息已成功提交</h2>
-		<h3>湛江一中IT社QQ群: 294013796</h3>
-		<p>加入时请注明班级，姓名，防止被拒绝</p>
-		<h3>湛江一中IT社微博: <a href="http://weibo.com/zjazure" target="_blank">@湛江一中IT社</a></h3>
-		<h3>2014年社团招新由湛江一中社团部统一进行</h3>
-		<h3>面试与活动的通知请密切关注社团部通知以及我们的微博</h3>
-    
+
 
 <?php
 function table_exist_or_create($tablename,$dbname,$mysqli)
@@ -25,7 +13,7 @@ function table_exist_or_create($tablename,$dbname,$mysqli)
         `Gender` VARCHAR(45) NOT NULL,
         `Grade` VARCHAR(45) NOT NULL,
         `Class` VARCHAR(45) NOT NULL,
-        `GroupName` VARCHAR(45) NOT NULL,
+        `GroupValue` VARCHAR(45) NOT NULL,
         `Email` VARCHAR(45) NOT NULL,
         `Phone` VARCHAR(45) NOT NULL,
         `QQ` VARCHAR(45) NOT NULL,
@@ -63,26 +51,14 @@ if (!$mysqli)
 $mysqli->set_charset("utf8");
 if(!table_exist_or_create($db_tbl,$db_name,$mysqli)) die("Failed to connect to specified table");
 
-
+$groupValue = 0;
 if($_POST['counter'])
 {
-    $GroupNameCounter = '';
-    foreach ($_POST['counter'] as $stringcounter)
-    {
-        $GroupNameCounter = $GroupNameCounter.' '.$stringcounter;
-
-    }
-$TotalGroup = $GroupNameCounter;
-}
-else{
-    $TotalGroup = "None";
+    foreach ($_POST['counter'] as $value)
+        $groupValue+=$value;
 }
 
-$sql = "INSERT INTO $db_tbl (Name,Gender,Grade,Class,GroupName,Email,Phone,QQ,Weibo,Description) VALUES ('$_POST[Name]','$_POST[Gender]','$_POST[Grade]','$_POST[Class]','$TotalGroup','$_POST[Email]','$_POST[Phone]','$_POST[QQ]','$_POST[Weibo]','$_POST[Description]')";
+$sql = "INSERT INTO $db_tbl (Name,Gender,Grade,Class,GroupValue,Email,Phone,QQ,Weibo,Description) VALUES ('$_POST[Name]','$_POST[Gender]','$_POST[Grade]','$_POST[Class]','$groupValue','$_POST[Email]','$_POST[Phone]','$_POST[QQ]','$_POST[Weibo]','$_POST[Description]')";
 $result = $mysqli->query($sql);
 if(!$result) die("Failed to insert");
 $mysqli->close();
-require("footer.php");
-?>
-</div> 
-</body>

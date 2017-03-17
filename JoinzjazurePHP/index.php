@@ -5,6 +5,21 @@ require(__DIR__."/class/verification-code.class.php");
 require(__DIR__."/class/groups.class.php");
 ?>
 <body>
+
+<?php if($_SERVER['REQUEST_METHOD']=="POST"){?>
+    <?php require(__DIR__."/submit.php") ?>
+    <div class="container" style="background-color:rgba(255,255,255,0.83)">
+    <div class="page-header">
+        <h1>湛江一中IT社 网络报名系统</h1>
+    </div>
+    <h2 class="alert alert-success">谢谢！报名信息已成功提交</h2>
+    <h3>湛江一中IT社QQ群: 294013796</h3>
+    <p>加入时请注明班级，姓名，防止被拒绝</p>
+    <h3>湛江一中IT社微博: <a href="http://weibo.com/zjazure" target="_blank">@湛江一中IT社</a></h3>
+    <h3>2014年社团招新由湛江一中社团部统一进行</h3>
+    <h3>面试与活动的通知请密切关注社团部通知以及我们的微博</h3>
+<?php } ?>
+<?php if($_SERVER['REQUEST_METHOD']=='GET'){ ?>
 <div class="container" style="background-color:rgba(255,255,255,0.83)">
     <div class="page-header">
         <h1>湛江一中IT社 网络报名系统</h1>
@@ -17,7 +32,7 @@ require(__DIR__."/class/groups.class.php");
     <p>加入我们吧！</p>
 </div>
 
-<form id="checkHandler" name="checkHandler" method="post" action="SubmitHandler.php">
+<form id="checkHandler" name="checkHandler" method="post">
     <div class="row">
         <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <label for="Name">姓名</label>
@@ -66,7 +81,7 @@ require(__DIR__."/class/groups.class.php");
             <div class='panel panel-primary'>
                 <div class='panel-heading'>
                     <h4 class='panel-title'>
-                        <input type='checkbox' id='<?php echo($group->id); ?>' name='counter[]' value='<?php echo($group->name); ?>'/>
+                        <input type='checkbox' id='<?php echo($group->id); ?>' name='counter[]' value='<?php echo($group->value); ?>'/>
                         <a data-toggle='collapse' class='info collapsed' data-parent='#accordion' href='#collapse<?php echo($group->name);?>' aria-expanded='false'><?php echo($group->name);?></a>
                     </h4>
                 </div>
@@ -128,4 +143,4 @@ require(__DIR__."/class/groups.class.php");
         <button type="reset" class="btn btn-link">重新填写</button>
     </div>
 </form>
-<?php require("footer.php");?>
+<?php require("footer.php");}?>
