@@ -1,64 +1,31 @@
+<?php if($_SERVER['REQUEST_METHOD']=="POST"){?>
+<?php require("header.php");?>
+<?php require(__DIR__."/class/member.class.php");?>
 
+<div class="container" style="background-color:rgba(255,255,255,0.83)">
+<div class="page-header">
+    <h1>湛江一中IT社 网络报名系统</h1>
+</div>
+<?php 
+$anouncements = json_decode(file_get_contents(__DIR__."/JsonData/Anouncement.json"),true);
+if(isset($anouncements["Submit"]))echo($anouncements["Submit"]) 
+?>
 
 <?php
-function table_exist_or_create($tablename,$dbname,$mysqli)
-{
-    $sql = "select * from information_schema.TABLES where table_schema='$dbname' and table_name='$tablename'";
-    $result = $mysqli->query($sql);
-    if($result->num_rows==0)
-    {
-        $sql = "
-        CREATE TABLE `$dbname`.`$tablename` (
-        `Name` VARCHAR(45) NOT NULL,
-        `Gender` VARCHAR(45) NOT NULL,
-        `Grade` VARCHAR(45) NOT NULL,
-        `Class` VARCHAR(45) NOT NULL,
-        `GroupValue` VARCHAR(45) NOT NULL,
-        `Email` VARCHAR(45) NOT NULL,
-        `Phone` VARCHAR(45) NOT NULL,
-        `QQ` VARCHAR(45) NOT NULL,
-        `Weibo` VARCHAR(45) NOT NULL,
-        `Description` VARCHAR(45) NOT NULL);
-        ";
-        return $mysqli->query($sql);
-    }
-    else
-        return true;
-}
-function load_json_config()
-{
-    if(file_exists("config.json")){ 
-        $content = file_get_contents("config.json"); 
-        $json = json_decode($content,true); 
-    }
-    return $json;
-}
-if(session_status()!=PHP_SESSION_ACTIVE)session_start();
-
-$conf = load_json_config();
-$db_host = $conf["database_host"];
-$db_name = $conf["database_name"];
-$db_user = $conf["database_user"];
-$db_pwd = $conf["database_pass"];
-$db_tbl = $conf["database_table"];
-
-
-$mysqli = mysqli_connect($db_host, $db_user, $db_pwd, $db_name);
-if (!$mysqli)
-{
-    echo mysqli_connect_error();
-}
-$mysqli->set_charset("utf8");
-if(!table_exist_or_create($db_tbl,$db_name,$mysqli)) die("Failed to connect to specified table");
-
-$groupValue = 0;
-if($_POST['counter'])
-{
-    foreach ($_POST['counter'] as $value)
-        $groupValue+=$value;
-}
-
-$sql = "INSERT INTO $db_tbl (Name,Gender,Grade,Class,GroupValue,Email,Phone,QQ,Weibo,Description) VALUES ('$_POST[Name]','$_POST[Gender]','$_POST[Grade]','$_POST[Class]','$groupValue','$_POST[Email]','$_POST[Phone]','$_POST[QQ]','$_POST[Weibo]','$_POST[Description]')";
-$result = $mysqli->query($sql);
-if(!$result) die("Failed to insert");
-$mysqli->close();
+    $member = new member();
+    $member->name = $_POST["Name"];
+    $member->gender = $_POST["Gender"]=="True"?true:false;
+    $member->grade = $_POST["Grade"];
+    $member->class = $_POST["Class"];
+    $member->groups = $_POST["counter"];
+    $member->email = $_POST["Email"];
+    $member->phone = $_POST["Phone"];
+    $member->QQ = $_POST["QQ"];
+    $member->weibo = $_POST["Weibo"];
+    $member->description = $_POST["Description"];
+    $result = member::add_member($member);
+    if(!$result) die("Failed to add data");
+    unset($_SESSION["VerificationCodeId"]);
+?>
+<?php require("footer.php"); ?>
+<?php } ?>

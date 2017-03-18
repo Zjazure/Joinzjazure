@@ -8,17 +8,6 @@ $anouncements = json_decode(file_get_contents(__DIR__."/JsonData/Anouncement.jso
 
 ?>
 <body>
-
-<?php if($_SERVER['REQUEST_METHOD']=="POST"){?>
-    <?php require(__DIR__."/submit.php") ?>
-    <div class="container" style="background-color:rgba(255,255,255,0.83)">
-    <div class="page-header">
-        <h1>湛江一中IT社 网络报名系统</h1>
-    </div>
-    <?php if(isset($anouncements["Submit"]))echo($anouncements["Submit"]) ?>
-    
-<?php } ?>
-<?php if($_SERVER['REQUEST_METHOD']=='GET'){ ?>
 <div class="container" style="background-color:rgba(255,255,255,0.83)">
     <div class="page-header">
         <h1>湛江一中IT社 网络报名系统</h1>
@@ -30,7 +19,7 @@ $anouncements = json_decode(file_get_contents(__DIR__."/JsonData/Anouncement.jso
     echo("</div>");
 }
 ?>
-<form id="checkHandler" name="checkHandler" method="post">
+<form id="checkHandler" name="checkHandler" method="post" action="submit.php">
     <div class="row">
         <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <label for="Name">姓名</label>
@@ -79,7 +68,7 @@ $anouncements = json_decode(file_get_contents(__DIR__."/JsonData/Anouncement.jso
             <div class='panel panel-primary'>
                 <div class='panel-heading'>
                     <h4 class='panel-title'>
-                        <input type='checkbox' id='<?php echo($group->id); ?>' name='counter[]' value='<?php echo($group->value); ?>'/>
+                        <input type='checkbox' id='<?php echo($group->id); ?>' name='counter[]' value='<?php echo($group->id); ?>'/>
                         <a data-toggle='collapse' class='info collapsed' data-parent='#accordion' href='#collapse<?php echo($group->name);?>' aria-expanded='false'><?php echo($group->name);?></a>
                     </h4>
                 </div>
@@ -141,4 +130,4 @@ $anouncements = json_decode(file_get_contents(__DIR__."/JsonData/Anouncement.jso
         <button type="reset" class="btn btn-link">重新填写</button>
     </div>
 </form>
-<?php require("footer.php");}?>
+<?php require("footer.php");?>
