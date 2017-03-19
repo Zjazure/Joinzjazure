@@ -11,9 +11,12 @@ require(dirname(__DIR__)."/class/member.class.php");
 <body>
     <div class="container" style="background-color:rgba(255,255,255,0.83)">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <div class="page-header">
             <h1>湛江一中IT社网络报名系统 管理后台</h1>
         </div>
+=======
+>>>>>>> origin/PHP-build
 =======
 >>>>>>> origin/PHP-build
         <div class="row">
