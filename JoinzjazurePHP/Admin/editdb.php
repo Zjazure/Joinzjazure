@@ -10,5 +10,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
     config::set_config("database_name",isset($_POST["database-name"])?$_POST["database-name"]:"");
     config::set_config("database_pass",isset($_POST["database-pass"])?$_POST["database-pass"]:"");
     config::set_config("database_user",isset($_POST["database-user"])?$_POST["database-user"]:"");
+    config::set_config("database_table",isset($_POST["database-table"])?$_POST["database-table"]:"");
 }
 header("Location: index.php");

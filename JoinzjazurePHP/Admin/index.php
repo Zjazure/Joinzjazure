@@ -33,6 +33,10 @@ require(dirname(__DIR__)."/class/member.class.php");
                                 <input type="text" class="form-control" id="database-name" name="database-name" value="<?php if(isset($conf["database_name"]))echo($conf["database_name"]);?>">
                             </div>
                             <div class="form-group">
+                                <label for="database-table" class="control-label">数据表名</label>
+                                <input type="text" class="form-control" id="database-table" name="database-table" value="<?php if(isset($conf["database_table"]))echo($conf["database_table"]);?>">
+                            </div>
+                            <div class="form-group">
                                 <label for="database-user" class="control-label">用户名</label>
                                 <input type="text" class="form-control" id="database-user" name="database-user" value="<?php if(isset($conf["database_user"]))echo($conf["database_user"]);?>">
                             </div>
@@ -42,7 +46,7 @@ require(dirname(__DIR__)."/class/member.class.php");
                             </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                         <button type="submit" class="btn btn-primary">保存</button>
                     </div>
                     </div>
