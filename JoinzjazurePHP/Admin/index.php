@@ -65,7 +65,6 @@ require(dirname(__DIR__)."/class/member.class.php");
                     <th>QQ</th>
                     <th>微博</th>
                     <th>简介</th>
-                    <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -91,11 +90,15 @@ require(dirname(__DIR__)."/class/member.class.php");
                             <td><?php echo($member->phone); ?></td>
                             <td><?php echo($member->QQ); ?></td>
                             <td><?php echo($member->weibo); ?></td>
-                            <td><?php echo($member->description); ?></td>
                             <td>
-                                <?php $id = urlencode($member->get_pk_json()); ?>
-                                <a class="btn btn-success" href="index.php?action=edit&id=<?php echo($id);?>" role="button">编辑</a>
-                                <a class="btn btn-danger" href="index.php?action=delete&id=<?php echo($id);?>" role="button">删除</a>
+                            <?php
+                                if(strlen($member->description)>100)
+                                {
+                                    ?><textarea class="form-control" id="message-text" style="resize:none;width:300px;height:100px;" readonly="readonly"><?php echo($member->description); ?></textarea><?php
+                                }
+                                else
+                                    echo($member->description);
+                            ?>                  
                             </td>
                             </tr>                     
                         <?php
