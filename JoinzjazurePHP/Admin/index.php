@@ -81,7 +81,7 @@ require(dirname(__DIR__)."/class/member.class.php");
                         ?>
                             <tr>
                             <th scope="row"><?php echo($member->name); ?></th>
-                            <td><?php echo($member->gender); ?></td>
+                            <td><?php echo(($member->gender==1)?"男":"女"); ?></td>
                             <td><?php echo($member->grade); ?></td>
                             <td><?php echo($member->class); ?></td>
                             <td>
