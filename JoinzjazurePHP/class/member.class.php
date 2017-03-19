@@ -13,6 +13,16 @@ class member
     public $weibo;
     public $description;
 
+    public function get_pk_json()
+    {
+        return json_encode(array(
+            "name"=>$this->name,
+            "gender"=>$this->gender,
+            "grade"=>$this->grade,
+            "class"=>$this->class
+        ));
+    }
+
     private static function connect_to_table()
     {
         $conf = config::get_configs();
@@ -84,11 +94,38 @@ class member
                 $member->QQ = $row["QQ"];
                 $member->weibo = $row["Weibo"];
                 $member->description = $row["Description"];
-                $member->groups = json_decode($row["Groups"]);
+                $member->groups = json_decode($row["GroupValue"],true);
                 array_push($members,$member);
             }
         $mysqli->close();
         return $members;
+    }
+
+    public static function get_member_by_pk_json($pk_json)
+    {
+        $pks = json_decode($pk_json,true);
+        $conf = config::get_configs();
+        $db_tbl = $conf["database_table"];
+        $mysqli = self::connect_to_table();
+        $sql_cmd = "SELECT * FROM $db_tbl WHERE Name='".self::CIC($pks["name"])."' AND Gender='".$pks["gender"]."' AND Grade='".self::CIC($pks["grade"])."' AND Class='".self::CIC($pks["class"])."' ";
+        $result = $mysqli->query($sql_cmd);
+        if($result->num_rows==1)
+        {
+            $row = $result->fetch_assoc();
+            $member = new member();
+            $member->name = $row["Name"];
+            $member->gender = $row["Gender"];
+            $member->grade = $row["Grade"];
+            $member->class = $row["Class"];
+            $member->email = $row["Email"];
+            $member->phone = $row["Phone"];
+            $member->QQ = $row["QQ"];
+            $member->weibo = $row["Weibo"];
+            $member->description = $row["Description"];
+            $member->groups = json_decode($row["GroupValue"],true);
+            return $member;
+        }
+        return null;
     }
 
     public static function add_member($member)
