@@ -71,32 +71,35 @@ require(dirname(__DIR__)."/class/member.class.php");
                 <tbody>
                     <?php
                     $members = member::get_members();
-                    foreach($members as $member)
+                    if(isset($members))
                     {
-                    ?>
-                        <tr>
-                        <th scope="row"><?php echo($member->name); ?></th>
-                        <td><?php echo($member->gender); ?></td>
-                        <td><?php echo($member->grade); ?></td>
-                        <td><?php echo($member->class); ?></td>
-                        <td>
-                        <?php
-                            foreach($member->groups as $group)
-                                echo($group."<br/>");
+                        foreach($members as $member)
+                        {
                         ?>
-                        </td>
-                        <td><?php echo($member->email); ?></td>
-                        <td><?php echo($member->phone); ?></td>
-                        <td><?php echo($member->QQ); ?></td>
-                        <td><?php echo($member->weibo); ?></td>
-                        <td><?php echo($member->description); ?></td>
-                        <td>
-                            <?php $id = urlencode($member->get_pk_json()); ?>
-                            <a class="btn btn-success" href="index.php?action=edit&id=<?php echo($id);?>" role="button">编辑</a>
-                            <a class="btn btn-danger" href="index.php?action=delete&id=<?php echo($id);?>" role="button">删除</a>
-                        </td>
-                        </tr>                     
-                    <?php
+                            <tr>
+                            <th scope="row"><?php echo($member->name); ?></th>
+                            <td><?php echo($member->gender); ?></td>
+                            <td><?php echo($member->grade); ?></td>
+                            <td><?php echo($member->class); ?></td>
+                            <td>
+                            <?php
+                                foreach($member->groups as $group)
+                                    echo($group."<br/>");
+                            ?>
+                            </td>
+                            <td><?php echo($member->email); ?></td>
+                            <td><?php echo($member->phone); ?></td>
+                            <td><?php echo($member->QQ); ?></td>
+                            <td><?php echo($member->weibo); ?></td>
+                            <td><?php echo($member->description); ?></td>
+                            <td>
+                                <?php $id = urlencode($member->get_pk_json()); ?>
+                                <a class="btn btn-success" href="index.php?action=edit&id=<?php echo($id);?>" role="button">编辑</a>
+                                <a class="btn btn-danger" href="index.php?action=delete&id=<?php echo($id);?>" role="button">删除</a>
+                            </td>
+                            </tr>                     
+                        <?php
+                        }
                     }
                     ?>
                 </tbody>

@@ -31,11 +31,7 @@ class member
         $db_user = $conf["database_user"];
         $db_pwd = $conf["database_pass"];
         $db_tbl = $conf["database_table"];
-        try
-        {
-           $mysqli = mysqli_connect($db_host, $db_user, $db_pwd, $db_name); 
-        }
-        catch(Exception $e){}
+        $mysqli = mysqli_connect($db_host, $db_user, $db_pwd, $db_name); 
         if (!$mysqli)
             return null;
         $mysqli->set_charset("utf8");
