@@ -1,22 +1,25 @@
 <?php
-require("Header.php");
-require("xmlparser.php");
-require("getq.php");
+$page_title = "湛江一中IT社 网络报名系统";
+require("header.php");
+require(__DIR__."/class/verification-code.class.php");
+require(__DIR__."/class/groups.class.php");
+
+$anouncements = json_decode(file_get_contents(__DIR__."/JsonData/Anouncement.json"),true);
+
 ?>
 <body>
 <div class="container" style="background-color:rgba(255,255,255,0.83)">
     <div class="page-header">
         <h1>湛江一中IT社 网络报名系统</h1>
     </div>
-<div class="alert alert-info">
-    <p>IT社设有五个小组，我们什么都玩=  =  。欢迎技术控，技术宅，技术X (●'◡'●)</p>
-    <p>除组员外，我们还需要社长一名，副社长两名，小组负责人各两名。</p>
-    <p>面试通过率估计值为80%</p>
-    <p>招新原则：兴趣第一，基础第二</p>
-    <p>加入我们吧！</p>
-</div>
-
-<form id="checkHandler" name="checkHandler" method="post" action="SubmitHandler.php">
+<?php if(isset($anouncements["Index"])&&$anouncements["Index"]!="")
+{
+    echo("<div class=\"alert alert-info\">");
+    echo($anouncements["Index"]);
+    echo("</div>");
+}
+?>
+<form id="checkHandler" name="checkHandler" method="post" action="submit.php">
     <div class="row">
         <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <label for="Name">姓名</label>
@@ -58,32 +61,26 @@ require("getq.php");
         <span class="label label-info">点击小组名称查看小组介绍</span>
         <input data-val="true" data-val-number="The field 小组 must be a number." data-val-required="请至少选择一个小组" id="Groups" name="Groups" type="hidden" value="0">
         <div class="panel-group">
-<?php
-            foreach ($Groups as $GDF)
-            {
-                echo "<div class='panel panel-primary'>
+        <?php
+        foreach (group::get_groups() as $group)
+        {
+            ?>
+            <div class='panel panel-primary'>
                 <div class='panel-heading'>
-                    <h4 class='panel-title'>";
-                echo "<input type='checkbox' id='".$GDF->attributes()->id."' name='counter[]' value='".$GDF->attributes()->name."'>
-                        <a data-toggle='collapse' class='info collapsed' data-parent='#accordion' href='#collapse".$GDF->attributes()->name."' aria-expanded='false'>".$GDF->attributes()->name."</a>
+                    <h4 class='panel-title'>
+                        <input type='checkbox' id='<?php echo($group->id); ?>' name='counter[]' value='<?php echo($group->id); ?>'/>
+                        <a data-toggle='collapse' class='info collapsed' data-parent='#accordion' href='#collapse<?php echo($group->name);?>' aria-expanded='false'><?php echo($group->name);?></a>
                     </h4>
                 </div>
-                ";
-                echo "<div id='collapse".$GDF->attributes()->name."' class='panel-collapse collapse' aria-expanded='false' style='height: 0px;'>
+                <div id='collapse<?php echo($group->name);?>' class='panel-collapse collapse' aria-expanded='false' style='height: 0px;'>
                     <div class='panel-body'>
-                        ";
-            foreach ($GDF as $GDS)
-            {
-
-                echo $GDS->attributes()."<br>";
-            }
-   echo "
+                        <?php echo(str_ireplace("\n","<br/>",$group->description)); ?>
                     </div>
                 </div>
-            </div>";
-            }
-?>
-
+            </div>
+           <?php
+        }
+        ?>
             <span class="field-validation-valid text-warning" data-valmsg-for="Groups" data-valmsg-replace="true"></span>
         </div>
     </div>
@@ -123,15 +120,9 @@ require("getq.php");
     </div>
 
     <div class="form-group">
-        <label>验证码</label>
-        <?php
-        global $QuestionCode;
-        $QuestionCode = rand(0,26);
-        getQuestion($VerificationCodes,$QuestionCode);
-        $_SESSION['vericode'] = $QuestionCode;
-        echo "<p id='question'>".$GLOBALS['layout']."</p>";
-        ?>
-        <input class="form-control text-box single-line" data-val="true" data-val-remote="验证码错误" data-val-remote-url="AnswerHandler.php" data-val-required="怎么可以不填验证码呢" id="VerificationCodeAnswer" name="VerificationCodeAnswer" type="text" value="">
+        <label>验证码</label>         
+        <p id='question'></p>
+        <input class="form-control text-box single-line" data-val="true" data-val-remote="验证码错误" data-val-remote-url="verification-code.php" data-val-required="怎么可以不填验证码呢" id="VerificationCodeAnswer" name="VerificationCodeAnswer" type="text" value="">
         <input class="form-control text-box single-line" data-val="true" data-val-remote-url="AnswerHandler.php" id="VerificationPost" name="VerificationPost" type="text" value="<?php echo $QuestionCode;?>" style="display: none">
         <span class="field-validation-valid text-warning" data-valmsg-for="VerificationCodeAnswer" data-valmsg-replace="true"></span>
         <button id="RefreshQ" type="button" class="btn btn-sm btn-link">换个问题</button>
