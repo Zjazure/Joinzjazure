@@ -11,7 +11,7 @@ require(dirname(__DIR__)."/class/member.class.php");
 <body>
     <div class="container" style="background-color:rgba(255,255,255,0.83)">
         <div class="page-header">
-            <h1>湛江一中IT社网络报名系统 管理后台<a class="btn btn-info" style="float:right;margin-left:5px;">注销</a><a class="btn btn-info" style="float:right;" data-toggle="modal" data-target="#editDBModel">配置数据库</a></h1>
+            <h1>湛江一中IT社网络报名系统 管理后台<a href="logout.php" class="btn btn-info" style="float:right;margin-left:5px;">注销</a><a class="btn btn-info" style="float:right;" data-toggle="modal" data-target="#editDBModel">配置数据库</a></h1>
         </div>
         <!--Dialog-->
         <div class="modal fade" id="editDBModel" tabindex="-1" role="dialog" aria-labelledby="editDBModel">
