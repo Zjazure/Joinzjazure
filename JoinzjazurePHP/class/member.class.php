@@ -31,11 +31,15 @@ class member
         $db_user = $conf["database_user"];
         $db_pwd = $conf["database_pass"];
         $db_tbl = $conf["database_table"];
-        $mysqli = mysqli_connect($db_host, $db_user, $db_pwd, $db_name);
+        try
+        {
+           $mysqli = mysqli_connect($db_host, $db_user, $db_pwd, $db_name); 
+        }
+        catch(Exception $e){}
         if (!$mysqli)
-            die(mysqli_connect_error());
+            return null;
         $mysqli->set_charset("utf8");
-        if(!self::table_exist_or_create($db_tbl,$db_name,$mysqli)) die("Failed to connect to specified table");
+        if(!self::table_exist_or_create($db_tbl,$db_name,$mysqli)) return null;
         return $mysqli;
     }
 
@@ -77,6 +81,7 @@ class member
         $db_tbl = $conf["database_table"];
 
         $mysqli = self::connect_to_table();
+        if(!$mysqli) return null;
         $sql_cmd = "SELECT * FROM $db_tbl";
         $result = $mysqli->query($sql_cmd);
 

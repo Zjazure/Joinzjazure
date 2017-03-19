@@ -45,6 +45,6 @@ $conf = config::get_configs();
                 </div>
                 </form>
         </div>
+        <?php require(dirname(__DIR__)."/footer.php");?>
     </div>
 </body>
-<?php require(dirname(__DIR__)."/footer.php");?>
