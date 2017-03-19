@@ -6,7 +6,7 @@ require(dirname(__DIR__)."/header.php");
 <body style="background-color:rgba(255,255,255,0.83)">
 <?php 
     if(!isset($_SESSION["IsLogin"]))
-        header("Location: login.php")
+        header("Location: login.php");
 ?>
 </body>
 <?php require(dirname(__DIR__)."/footer.php");?>

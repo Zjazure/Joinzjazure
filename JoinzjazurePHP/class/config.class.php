@@ -9,4 +9,11 @@ class config
         }
         return $json;
     }
+
+    public static function set_config($config,$value)
+    {
+        $conf = self::get_configs();
+        $conf[$config] = $value;
+        file_put_contents(dirname(__DIR__)."/config.json",json_encode($conf,true));
+    }
 }
