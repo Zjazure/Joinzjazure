@@ -1,5 +1,8 @@
 <?php if($_SERVER['REQUEST_METHOD']=="POST"){?>
-<?php require("header.php");?>
+<?php 
+$page_title = "湛江一中IT社 网络报名系统";
+require("header.php");
+?>
 <?php require(__DIR__."/class/member.class.php");?>
 
 <div class="container" style="background-color:rgba(255,255,255,0.83)">

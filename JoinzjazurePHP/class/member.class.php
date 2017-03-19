@@ -1,4 +1,5 @@
 <?php
+require(__DIR__."/config.class.php");
 class member
 {
     public $name;
@@ -12,17 +13,9 @@ class member
     public $weibo;
     public $description;
 
-    private static function load_json_config()
-    {
-        if(file_exists(dirname(__DIR__)."/config.json")){ 
-            $content = file_get_contents(dirname(__DIR__)."/config.json"); 
-            $json = json_decode($content,true); 
-        }
-        return $json;
-    }
     private static function connect_to_table()
     {
-        $conf = self::load_json_config();
+        $conf = config::get_configs();
         $db_host = $conf["database_host"];
         $db_name = $conf["database_name"];
         $db_user = $conf["database_user"];
@@ -70,7 +63,7 @@ class member
 
     public static function get_members()
     {
-        $conf = self::load_json_config();
+        $conf = config::get_configs();
         $db_tbl = $conf["database_table"];
 
         $mysqli = self::connect_to_table();
@@ -100,7 +93,7 @@ class member
 
     public static function add_member($member)
     {
-        $conf = self::load_json_config();
+        $conf = config::get_configs();
         $db_tbl = $conf["database_table"];
         $mysqli = self::connect_to_table();
         $result = true;

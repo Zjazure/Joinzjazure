@@ -1,5 +1,5 @@
 <?php
-
+$page_title = "湛江一中IT社 网络报名系统";
 require("header.php");
 require(__DIR__."/class/verification-code.class.php");
 require(__DIR__."/class/groups.class.php");
