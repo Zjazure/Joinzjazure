@@ -11,6 +11,12 @@ $anouncements = json_decode(file_get_contents(__DIR__."/JsonData/Anouncement.jso
     <div class="page-header">
         <h1>湛江一中IT社 网络报名系统</h1>
     </div>
+<?php
+if(isset($conf["website_enable"])&&$conf["website_enable"]=="Enabled")
+    {if(isset($anouncements["Submit"])) echo($anouncements["Submit"]);}
+else
+    {if(isset($anouncements["DisabledSubmit"])) echo($anouncements["DisabledSubmit"]);}
+?>
 <?php if(isset($anouncements["Index"])&&$anouncements["Index"]!="")
 {
     echo("<div class=\"alert alert-info\">");
@@ -136,4 +142,5 @@ $anouncements = json_decode(file_get_contents(__DIR__."/JsonData/Anouncement.jso
         <button type="reset" class="btn btn-link">重新填写</button>
     </div>
 </form>
+</div>
 <?php require("footer.php");?>
