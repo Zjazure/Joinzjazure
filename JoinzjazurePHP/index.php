@@ -7,7 +7,6 @@ require(__DIR__."/class/groups.class.php");
 $anouncements = json_decode(file_get_contents(__DIR__."/JsonData/Anouncement.json"),true);
 
 ?>
-<body>
 <div class="container" style="background-color:rgba(255,255,255,0.83)">
     <div class="page-header">
         <h1>湛江一中IT社 网络报名系统</h1>
@@ -39,9 +38,16 @@ $anouncements = json_decode(file_get_contents(__DIR__."/JsonData/Anouncement.jso
         <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <label for="Grade">年级</label>
             <span class="label label-info">必填</span>
-
-
             <select class="form-control valid" data-val="true" data-val-number="The field 年级 must be a number." data-val-required="The 年级 field is required." id="Grade" name="Grade" aria-required="true" aria-invalid="false" aria-describedby="Grade-error">
+                <?php       
+                if(date("n") < 7){
+                    $grade1 = date("Y",strtotime("-1 year"));
+                    $grade2 = date("Y",strtotime("-2 year"));
+                }else{
+                    $grade1 = date("Y");
+                    $grade2 = date("Y",strtotime("-1 year"));
+                }
+                ?>
                 <option value="<?php echo $grade1?>">高一(<?php echo $grade1?>年入学)</option>
                 <option value="<?php echo $grade2?>">高二(<?php echo $grade2?>年入学)</option>
             </select>

@@ -5,8 +5,6 @@
 	<script src="<?php if(isset($page_address)) echo($page_address); ?>Scripts/jquery.validate.js"></script>
 	<script src="<?php if(isset($page_address)) echo($page_address); ?>Scripts/jquery.validate.unobtrusive.js"></script>
 	<script src="<?php if(isset($page_address)) echo($page_address); ?>Scripts/questions.js"></script>
-	<script>
-		
-	</script>
 </footer>
+</body>
 </html>

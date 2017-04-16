@@ -12,14 +12,4 @@
 	<link rel="stylesheet" href="<?php if(isset($page_address)) echo($page_address); ?>Content/site.css">
 	<title><?php echo($page_title);?></title>
 </head>
-<?php
-$thisMonth = date("n");
-echo $thisMonth;
-if($thisMonth < 7){
-	$grade1 = date("Y",strtotime("-1 year"));
-	$grade2 = date("Y",strtotime("-2 year"));
-}else{
-	$grade1 = date("Y");
-	$grade2 = date("Y",strtotime("-1 year"));
-}
-?>
+<body>
