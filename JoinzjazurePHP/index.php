@@ -1,9 +1,10 @@
 <?php
 $page_title = "湛江一中IT社 网络报名系统";
 require("header.php");
-require(__DIR__."/class/verification-code.class.php");
-require(__DIR__."/class/groups.class.php");
-
+require_once(__DIR__."/class/verification-code.class.php");
+require_once(__DIR__."/class/groups.class.php");
+require_once(__DIR__."/class/config.class.php");
+$conf = config::get_configs();
 $anouncements = json_decode(file_get_contents(__DIR__."/JsonData/Anouncement.json"),true);
 
 ?>
@@ -12,10 +13,8 @@ $anouncements = json_decode(file_get_contents(__DIR__."/JsonData/Anouncement.jso
         <h1>湛江一中IT社 网络报名系统</h1>
     </div>
 <?php
-if(isset($conf["website_enable"])&&$conf["website_enable"]=="Enabled")
-    {if(isset($anouncements["Submit"])) echo($anouncements["Submit"]);}
-else
-    {if(isset($anouncements["DisabledSubmit"])) echo($anouncements["DisabledSubmit"]);}
+if((!isset($conf["website_enable"]))||$conf["website_enable"]!="Enabled")
+    if(isset($anouncements["DisabledSubmit"])) echo($anouncements["DisabledSubmit"]);
 ?>
 <?php if(isset($anouncements["Index"])&&$anouncements["Index"]!="")
 {

@@ -2,7 +2,7 @@
 $page_title = "湛江一中IT社网络报名系统 管理后台";
 $page_address = "../";
 require(dirname(__DIR__)."/header.php");
-require(dirname(__DIR__)."/class/member.class.php");
+require_once(dirname(__DIR__)."/class/member.class.php");
 ?>
 <?php 
     if(!isset($_SESSION["IsLogin"]))

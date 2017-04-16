@@ -1,5 +1,5 @@
 <?php if(session_status()!=PHP_SESSION_ACTIVE)session_start();?>
-<?php require(dirname(__DIR__)."/class/config.class.php");?>
+<?php require_once(dirname(__DIR__)."/class/config.class.php");?>
 <?php
 if(!isset($_SESSION["IsLogin"]))
      header("Location: login.php");
