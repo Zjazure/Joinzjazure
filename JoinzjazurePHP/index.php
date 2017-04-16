@@ -141,5 +141,4 @@ if((!isset($conf["website_enable"]))||$conf["website_enable"]!="Enabled")
         <button type="reset" class="btn btn-link">重新填写</button>
     </div>
 </form>
-</div>
 <?php require("footer.php");?>
