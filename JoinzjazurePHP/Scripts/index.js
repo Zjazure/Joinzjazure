@@ -1,5 +1,5 @@
-(function(){
-    $("#checkHandler").validate( {
+﻿
+$("#checkHandler").validate( {
             rules: {
                 VerificationCodeAnswer: {
                     required: true,
@@ -19,9 +19,7 @@
                 form.submit();
             }
         }
-
-    );
-});
+);
 $("#RefreshQ").click(function(){
 	$.get("verification-code.php",{func:"question"},function(data,textStatus){
 		$("#question").html(data);
