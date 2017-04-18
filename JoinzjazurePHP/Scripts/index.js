@@ -1,4 +1,4 @@
-﻿
+﻿$.validator.unobtrusive.parse(document);
 $("#checkHandler").validate( {
             rules: {
                 VerificationCodeAnswer: {

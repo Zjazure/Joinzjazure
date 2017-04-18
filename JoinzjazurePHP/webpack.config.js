@@ -5,8 +5,8 @@ module.exports = function(env) {
     return {
         entry: {
             app:['./Scripts/index.js'],
-            vendor: ['jquery','jquery-validation'],
-            style:['bootstrap','./Content/site.css','./Content/vendor.js']
+            vendor: ['jquery','jquery-validation','jquery-validation-unobtrusive'],
+            style:['bootstrap','./Content/site.css','./Content/vendor.js'],
         },
         output: {
             filename: '[name].js',
