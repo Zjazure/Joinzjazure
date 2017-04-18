@@ -7,8 +7,6 @@
     <meta name="baidu-site-verification" content="GE3bEPSpwX" />
     <meta name="keywords" content="湛江一中,湛江一中IT社,IT社,湛江,社团" />
     <!--css files-->
-    <script src="<?php if(isset($page_address)) echo($page_address); ?>public/vendor.js"></script>
-    <script src="<?php if(isset($page_address)) echo($page_address); ?>public/style.js"></script>
     <link rel="stylesheet" href="<?php if(isset($page_address)) echo($page_address); ?>public/styles.css">  
 	<title><?php echo($page_title);?></title>
 </head>
