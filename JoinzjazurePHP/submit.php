@@ -6,9 +6,9 @@ require("header.php");
 <?php require_once(__DIR__."/class/member.class.php");?>
 <?php require_once(__DIR__."/class/config.class.php");?>
 <div class="container" style="background-color:rgba(255,255,255,0.83)">
-<div class="page-header">
-    <h1>湛江一中IT社 网络报名系统</h1>
-</div>
+    <div class="page-header">
+        <h1>湛江一中IT社 网络报名系统</h1>
+    </div>
 <?php 
 $conf = config::get_configs();
 $anouncements = json_decode(file_get_contents(__DIR__."/JsonData/Anouncement.json"),true);
@@ -38,5 +38,7 @@ else
     }
     unset($_SESSION["VerificationCodeId"]);  
 ?>
+    <p>&copy; 2013 - <?php echo date('Y')?> 湛江一中IT社 保留所有权利</p>
+</div>
 <?php require("footer.php"); ?>
 <?php } ?>
