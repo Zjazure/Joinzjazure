@@ -1,7 +1,8 @@
 {
   "name": "joinzjazure",
-  "version": "0.0.1",
-  "description": "",
+  "version": "1.0.0",
+  "private": true,
+  "description": "湛江一中IT社网络报名系统",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
