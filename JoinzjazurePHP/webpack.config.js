@@ -20,7 +20,7 @@ module.exports = function(env) {
             })
         },
         {
-            test: /\.(png|jpg|jpeg|gif|woff)$/,
+            test: /\.(png|jpg|jpeg|gif)$/,
             loader: 'file-loader?name=./Images/[name].[ext]'
         },
                     {
