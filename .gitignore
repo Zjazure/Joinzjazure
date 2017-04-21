@@ -5,3 +5,5 @@
 #Configuration Files
 
 /JoinzjazurePHP/config.json
+/JoinzjazurePHP/node_modules
+/JoinzjazurePHP/public
