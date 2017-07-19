@@ -129,6 +129,17 @@ class member
         return null;
     }
 
+    public static function delete_member($member)
+    {
+        $conf = config::get_configs();
+        $db_tbl = $conf["database_table"];
+        $mysqli = self::connect_to_table();
+        $sql_cmd = "DELETE FROM $db_tbl WHERE Name='".self::CIC($member->name)."' AND Gender='".$member->gender."' AND Grade='".self::CIC($member->grade)."' AND Class='".self::CIC($member->class)."' ";
+        $result = $mysqli->query($sql_cmd);
+        $mysqli->close();
+        return $result;
+    }
+
     public static function add_member($member)
     {
         $conf = config::get_configs();

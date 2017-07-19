@@ -76,6 +76,7 @@ require_once(dirname(__DIR__)."/class/member.class.php");
                 <th>QQ</th>
                 <th>微博</th>
                 <th>简介</th>
+                <th>操作</th>
                 </tr>
             </thead>
             <tbody>
@@ -110,6 +111,13 @@ require_once(dirname(__DIR__)."/class/member.class.php");
                             else
                                 echo($member->description);
                         ?>                  
+                        </td>
+                        <td>
+                            <?php
+                                $delete_url = "edit.php?action=delete&";
+                                $delete_url.= "name=$member->name&gender=$member->gender&grade=$member->grade&class=$member->class";
+                            ?>
+                            <a href="<?php echo($delete_url);?>" class="btn btn-danger">删除</a>
                         </td>
                         </tr>                     
                     <?php
