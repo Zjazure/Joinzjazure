@@ -69,24 +69,9 @@ if((!isset($conf["website_enable"]))||$conf["website_enable"]!="Enabled")
 
         <div class="form-group">
             <label>兴趣与方向</label>
-            <span class="label label-info">选择你的兴趣</span>
-            <input data-val="true" data-val-number="The field 小组 must be a number." data-val-required="请至少选择一个小组" id="Groups" name="Groups" type="hidden" value="0">
-            <div class="container">
-                <div class="row show-grid">
-                <?php
-                foreach(group::get_groups() as $group)
-                {
-                    ?>
-                    <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6">
-                        <input type='checkbox' id='<?php echo($group->id); ?>' name='counter[]' value='<?php echo($group->id); ?>'/>
-                        <?php echo($group->name)?>
-                    </div>
-                    <?php
-                }
-
-                ?>
-                </div>
-            </div>
+            <span class="label label-info">必填</span>
+            <input class="form-control text-box single-line" data-val="true" data-val-required="填一下你的兴趣方向嘛" id="Groups" name="Groups" type="text" value="">
+            <span class="field-validation-valid text-warning" data-valmsg-for="Groups" data-valmsg-replace="true"></span>
         </div>
 
         <div class="row">

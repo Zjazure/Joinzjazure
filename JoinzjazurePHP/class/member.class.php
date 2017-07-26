@@ -95,7 +95,7 @@ class member
                 $member->QQ = $row["QQ"];
                 $member->weibo = $row["Weibo"];
                 $member->description = $row["Description"];
-                $member->groups = json_decode($row["GroupValue"],true);
+                $member->groups = $row["GroupValue"];
                 array_push($members,$member);
             }
         $mysqli->close();
@@ -153,7 +153,7 @@ class member
             $sql_cmd = "DELETE FROM $db_tbl WHERE Name='".self::CIC($member->name)."' AND Gender='".$member->gender."' AND Grade='".self::CIC($member->grade)."' AND Class='".self::CIC($member->class)."' ";
             $result=$result&&$mysqli->query($sql_cmd);
         }
-        $sql_cmd = "INSERT INTO $db_tbl (Name,Gender,Grade,Class,GroupValue,Email,Phone,QQ,Weibo,Description) VALUES ('".self::CIC($member->name)."','".$member->gender."','".self::CIC($member->grade)."','".self::CIC($member->class)."','".self::CIC(json_encode($member->groups))."','".self::CIC($member->email)."','".self::CIC($member->phone)."','".self::CIC($member->QQ)."','".self::CIC($member->weibo)."','".self::CIC($member->description)."')";
+        $sql_cmd = "INSERT INTO $db_tbl (Name,Gender,Grade,Class,GroupValue,Email,Phone,QQ,Weibo,Description) VALUES ('".self::CIC($member->name)."','".$member->gender."','".self::CIC($member->grade)."','".self::CIC($member->class)."','".self::CIC($member->groups)."','".self::CIC($member->email)."','".self::CIC($member->phone)."','".self::CIC($member->QQ)."','".self::CIC($member->weibo)."','".self::CIC($member->description)."')";
         $result = $result&&$mysqli->query($sql_cmd);
         $mysqli->close();
         return $result;

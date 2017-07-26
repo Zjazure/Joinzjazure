@@ -27,7 +27,7 @@ else
         $member->gender = $_POST["Gender"]=="True"?true:false;
         $member->grade = $_POST["Grade"];
         $member->class = $_POST["Class"];
-        $member->groups = isset($_POST["counter"])?$_POST["counter"]:array("None");
+        $member->groups = $_POST["Groups"];
         $member->email = $_POST["Email"];
         $member->phone = $_POST["Phone"];
         $member->QQ = $_POST["QQ"];
