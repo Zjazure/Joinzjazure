@@ -68,31 +68,24 @@ if((!isset($conf["website_enable"]))||$conf["website_enable"]!="Enabled")
         </div>
 
         <div class="form-group">
-            <label>小组</label>
-            <span class="label label-info">点击小组名称查看小组介绍</span>
+            <label>兴趣与方向</label>
+            <span class="label label-info">选择你的兴趣</span>
             <input data-val="true" data-val-number="The field 小组 must be a number." data-val-required="请至少选择一个小组" id="Groups" name="Groups" type="hidden" value="0">
-            <div class="panel-group">
-            <?php
-            foreach (group::get_groups() as $group)
-            {
+            <div class="container">
+                <div class="row show-grid">
+                <?php
+                foreach(group::get_groups() as $group)
+                {
+                    ?>
+                    <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6">
+                        <input type='checkbox' id='<?php echo($group->id); ?>' name='counter[]' value='<?php echo($group->id); ?>'/>
+                        <?php echo($group->name)?>
+                    </div>
+                    <?php
+                }
+
                 ?>
-                <div class='panel panel-primary'>
-                    <div class='panel-heading'>
-                        <h4 class='panel-title'>
-                            <input type='checkbox' id='<?php echo($group->id); ?>' name='counter[]' value='<?php echo($group->id); ?>'/>
-                            <a data-toggle='collapse' class='info collapsed' data-parent='#accordion' href='#collapse<?php echo($group->name);?>' aria-expanded='false'><?php echo($group->name);?></a>
-                        </h4>
-                    </div>
-                    <div id='collapse<?php echo($group->name);?>' class='panel-collapse collapse' aria-expanded='false' style='height: 0px;'>
-                        <div class='panel-body'>
-                            <?php echo(str_ireplace("\n","<br/>",$group->description)); ?>
-                        </div>
-                    </div>
                 </div>
-            <?php
-            }
-            ?>
-                <span class="field-validation-valid text-warning" data-valmsg-for="Groups" data-valmsg-replace="true"></span>
             </div>
         </div>
 
