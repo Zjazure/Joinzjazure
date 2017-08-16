@@ -1,5 +1,5 @@
 <?php
-$page_title = "湛江一中IT社 失散社员补登系统";
+$page_title = "湛江一中IT社 社员补登系统";
 require("header.php");
 require_once(__DIR__."/class/verification-code.class.php");
 require_once(__DIR__."/class/groups.class.php");
@@ -10,7 +10,7 @@ $anouncements = json_decode(file_get_contents(__DIR__."/JsonData/Anouncement.jso
 <?php if(!isset($_SESSION["Verify_Stage"])||$_SESSION["Verify_Stage"]!="Verified") header("Location: verify.php"); ?>
 <div class="container" style="background-color:rgba(255,255,255,0.83)">
     <div class="page-header">
-        <h1>湛江一中IT社 网络报名系统</h1>
+        <h1>湛江一中IT社 社员补登系统</h1>
     </div>
 <?php
 if((!isset($conf["website_enable"]))||$conf["website_enable"]!="Enabled")

@@ -41,31 +41,34 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 }
 else{generate_questions();}
 ?>
-<div class="container" style="background-color:rgba(255,255,255,0.83)">
-    <div class="page-header">
-        <h1>湛江一中IT社 失散社员补登系统</h1>
-    </div>
-    <?php
-    $v1 = verification_code::get_verification_code_by_id($_SESSION["Verify_Q1"]);
-    $v2 = verification_code::get_verification_code_by_id($_SESSION["Verify_Q2"]);
-    ?>
-    <form method="post">
-        <div class="row">
-            <div class="form-group col-md-offset-3 col-md-6 col-sm-12">
-                <span class="label label-info">问题1</span>
-                <label><?php echo($v1->question); ?></label>
-                <input class="form-control text-box single-line" data-val="true" data-val-required="请填写问题1" id="answer1" name="answer1" type="text" value="">
-            </div>
-            <div class="form-group col-md-offset-3 col-md-6 col-sm-12">
-                <span class="label label-info">问题2</span>
-                <label><?php echo($v2->question); ?></label>
-                <input class="form-control text-box single-line" data-val="true" data-val-required="请填写问题2" id="answer2" name="answer2" type="text" value="">
-            </div>
-            <div class="form-group col-md-offset-3 col-md-6 col-sm-12">
-                <button type="submit" class="btn btn-info btn-block">进入系统</button>
+<div class="modal show" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <?php
+            $v1 = verification_code::get_verification_code_by_id($_SESSION["Verify_Q1"]);
+            $v2 = verification_code::get_verification_code_by_id($_SESSION["Verify_Q2"]);
+            ?>
+            <div class="modal-header"><h4 class="modal-title text-center text-primary">湛江一中IT社 社员补登系统</h4></div>
+            <div class="modal-body">
+                <form method="post">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <span class="label label-info">问题1</span>
+                            <label><?php echo($v1->question); ?></label>
+                            <input class="form-control text-box single-line" data-val="true" data-val-required="请填写问题1" id="answer1" name="answer1" type="text" value="">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <span class="label label-info">问题2</span>
+                            <label><?php echo($v2->question); ?></label>
+                            <input class="form-control text-box single-line" data-val="true" data-val-required="请填写问题2" id="answer2" name="answer2" type="text" value="">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <button type="submit" class="btn btn-info btn-block">进入系统</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-    </form>
-    <p>&copy; 2013 - <?php echo date('Y')?> 湛江一中IT社 保留所有权利</p>
+    </div>
 </div>
 <?php require("footer.php");?>
