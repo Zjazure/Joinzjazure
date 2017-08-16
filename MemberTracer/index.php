@@ -122,7 +122,7 @@ if((!isset($conf["website_enable"]))||$conf["website_enable"]!="Enabled")
         </div>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-info">提交报名表</button>
+            <button type="submit" class="btn btn-info">补登信息</button>
             <button type="reset" class="btn btn-link">重新填写</button>
         </div>
     </form>
