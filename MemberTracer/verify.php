@@ -32,6 +32,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                     $_SESSION["Verify_Stage"] = "Verified";
                     header("Location: index.php");
                 }
+                else
+                    generate_questions();
                 break;
             case"Verified":header("Location: index.php");break;
             default:generate_questions();break;
