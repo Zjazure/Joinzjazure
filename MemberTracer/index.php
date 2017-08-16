@@ -36,8 +36,8 @@ if((!isset($conf["website_enable"]))||$conf["website_enable"]!="Enabled")
                 <label for="Gender">性别</label>
                 <span class="label label-info">必填</span>
                 <select class="form-control valid" data-val="true" data-val-required="The 性别 field is required." id="Gender" name="Gender" aria-required="true" aria-invalid="false" aria-describedby="Gender-error">
-                    <option value="True">汉子</option>
-                    <option value="False">妹纸</option>
+                    <option value="True">男</option>
+                    <option value="False">女</option>
                 </select>
             </div>
             <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
@@ -55,17 +55,38 @@ if((!isset($conf["website_enable"]))||$conf["website_enable"]!="Enabled")
                 <input class="form-control text-box single-line" data-val="true" data-val-number="The field 班级 must be a number." data-val-range="同学你走错班了" data-val-range-max="42" data-val-range-min="1" data-val-required="填写班级，福利送上门哦" id="Class" name="Class" placeholder="1 - 42" type="number" value="">
                 <span class="field-validation-valid text-warning" data-valmsg-for="Class" data-valmsg-replace="true"></span>
             </div>
-
-
         </div>
-
-        <div class="form-group">
-            <label>兴趣与方向</label>
-            <span class="label label-info">必填</span>
-            <input class="form-control text-box single-line" data-val="true" data-val-required="填一下你的兴趣方向嘛" id="Groups" name="Groups" type="text" value="">
-            <span class="field-validation-valid text-warning" data-valmsg-for="Groups" data-valmsg-replace="true"></span>
+        <div class="row">
+            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label>入社时间（预估）</label>
+                <span class="label label-info">请务必认真填写此值</span>
+                <div class="input-group">
+                    <select class="form-control" data-val="true" id="JoinYear" Name="JoinYear">
+                        <?php for($i=2013;$i<=2016;$i+=1){ ?>
+                            <option value="<?php echo $i?>"><?php echo($i)?></option>
+                        <?php } ?>
+                    </select>
+                    <span class="input-group-addon" id="basic-addon1">年</span>
+                    <select class="form-control" data-val="true" id="JoinMonth" Name="JoinMonth">
+                        <?php for($i=1;$i<=12;$i+=1){ ?>
+                            <option value="<?php echo $i?>"><?php echo($i)?></option>
+                        <?php } ?>
+                    </select>
+                    <span class="input-group-addon" id="basic-addon1">月</span>
+                    <input type="number" class="form-control" placeholder="入社日期" data-val="true" data-val-range="请用公历日期" data-val-range-max="31" data-val-range-min="1" data-val-required="填写入社日期才能统计哟" id="JoinDate" Name="JoinDate">
+                    <span class="input-group-addon" id="basic-addon1">日</span>
+                </div>
+                <span class="field-validation-valid text-warning" data-valmsg-for="JoinYear" data-valmsg-replace="true"></span>
+                <span class="field-validation-valid text-warning" data-valmsg-for="JoinMonth" data-valmsg-replace="true"></span>
+                <span class="field-validation-valid text-warning" data-valmsg-for="JoinDate" data-valmsg-replace="true"></span>
+            </div>
+            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label for="Grade">兴趣相关</label>
+                <span class="label label-info">必填</span>
+                <input class="form-control text-box single-line" data-val="true" data-val-required="请填写相关兴趣" id="Groups" name="Groups" type="text" value="">
+                <span class="field-validation-valid text-warning" data-valmsg-for="Groups" data-valmsg-replace="true"></span>
+            </div>
         </div>
-
         <div class="row">
             <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
                 <label for="Email">邮箱</label>
