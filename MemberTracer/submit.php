@@ -19,14 +19,16 @@ else
 ?>
 
 <?php
-    
     if(isset($conf["website_enable"])&&$conf["website_enable"]=="Enabled")
     {
+        $date = date_create($_POST["JoinYear"]."-".$_POST["JoinMonth"]."-".$_POST["JoinDate"]);
+        $dt = date_timestamp_get($date);
         $member = new member();
         $member->name = $_POST["Name"];
         $member->gender = $_POST["Gender"]=="True"?true:false;
         $member->grade = $_POST["Grade"];
         $member->class = $_POST["Class"];
+        $member->joindate = $dt;
         $member->groups = $_POST["Groups"];
         $member->email = $_POST["Email"];
         $member->phone = $_POST["Phone"];
