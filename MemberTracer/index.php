@@ -44,17 +44,9 @@ if((!isset($conf["website_enable"]))||$conf["website_enable"]!="Enabled")
                 <label for="Grade">年级</label>
                 <span class="label label-info">必填</span>
                 <select class="form-control valid" data-val="true" data-val-number="The field 年级 must be a number." data-val-required="The 年级 field is required." id="Grade" name="Grade" aria-required="true" aria-invalid="false" aria-describedby="Grade-error">
-                    <?php       
-                    if(date("n") < 7){
-                        $grade1 = date("Y",strtotime("-1 year"));
-                        $grade2 = date("Y",strtotime("-2 year"));
-                    }else{
-                        $grade1 = date("Y");
-                        $grade2 = date("Y",strtotime("-1 year"));
-                    }
-                    ?>
-                    <option value="<?php echo $grade1?>">高一(<?php echo $grade1?>年入学)</option>
-                    <option value="<?php echo $grade2?>">高二(<?php echo $grade2?>年入学)</option>
+                    <?php for($i=2013;$i<=2016;$i+=1){ ?>
+                        <option value="<?php echo $i?>"><?php echo($i)?>级(<?php echo $i?>年入学)</option>
+                    <?php } ?>
                 </select>
             </div>
             <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
@@ -109,12 +101,6 @@ if((!isset($conf["website_enable"]))||$conf["website_enable"]!="Enabled")
         </div>
 
         <div class="form-group">
-            <label>验证码</label>         
-            <p id='question'></p>
-            <input class="form-control text-box single-line" data-val="true" data-val-remote="验证码错误" data-val-remote-url="verification-code.php" data-val-required="怎么可以不填验证码呢" id="VerificationCodeAnswer" name="VerificationCodeAnswer" type="text" value="">
-            <input class="form-control text-box single-line" data-val="true" data-val-remote-url="AnswerHandler.php" id="VerificationPost" name="VerificationPost" type="text" value="<?php echo $QuestionCode;?>" style="display: none">
-            <span class="field-validation-valid text-warning" data-valmsg-for="VerificationCodeAnswer" data-valmsg-replace="true"></span>
-            <button id="RefreshQ" type="button" class="btn btn-sm btn-link">换个问题</button>
             <button type="submit" class="btn btn-info">提交报名表</button>
             <button type="reset" class="btn btn-link">重新填写</button>
         </div>

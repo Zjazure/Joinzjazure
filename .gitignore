@@ -4,6 +4,7 @@
 
 #Configuration Files
 
-/JoinzjazurePHP/config.json
-/JoinzjazurePHP/node_modules
-/JoinzjazurePHP/public
+/MemberTracer/config.json
+/MemberTracer/node_modules
+/MemberTracer/public
+/MemberTracer/web.config
