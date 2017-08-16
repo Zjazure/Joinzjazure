@@ -1,13 +1,13 @@
 <?php
-$page_title = "湛江一中IT社 网络报名系统";
+$page_title = "湛江一中IT社 失散社员补登系统";
 require("header.php");
 require_once(__DIR__."/class/verification-code.class.php");
 require_once(__DIR__."/class/groups.class.php");
 require_once(__DIR__."/class/config.class.php");
 $conf = config::get_configs();
 $anouncements = json_decode(file_get_contents(__DIR__."/JsonData/Anouncement.json"),true);
-
 ?>
+<?php if(!isset($_SESSION["Verify_Stage"])||$_SESSION["Verify_Stage"]!="Verified") header("Location: verify.php"); ?>
 <div class="container" style="background-color:rgba(255,255,255,0.83)">
     <div class="page-header">
         <h1>湛江一中IT社 网络报名系统</h1>
