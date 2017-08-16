@@ -1,5 +1,5 @@
 <?php 
-$page_title = "湛江一中IT社网络报名系统 管理后台 - 登录";
+$page_title = "湛江一中IT社社员补登系统 管理后台 - 登录";
 require("header.php");
 require_once(dirname(__DIR__)."/class/config.class.php");
 $conf = config::get_configs();
@@ -28,7 +28,7 @@ $conf = config::get_configs();
 ?>
 <div class="container" style="background-color:rgba(255,255,255,0.83)">
     <div class="page-header">
-        <h1>湛江一中IT社网络报名系统 管理后台 - 登录</h1>
+        <h1>湛江一中IT社社员补登系统 管理后台 - 登录</h1>
     </div>
     <?php if(isset($is_pass_error)&&$is_pass_error==true) echo("<div class=\"alert alert-danger\">管理密码错误</div>");?>
     <div class="row">           
