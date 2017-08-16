@@ -1,3 +1,4 @@
+<?php if(!isset($_SESSION["Verify_Stage"])||$_SESSION["Verify_Stage"]!="Verified") header("Location: verify.php"); ?>
 <?php if($_SERVER['REQUEST_METHOD']=="POST"){?>
 <?php 
 $page_title = "湛江一中IT社 社员补登系统";
