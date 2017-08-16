@@ -1,5 +1,5 @@
 <?php
-$page_title = "湛江一中IT社 失散社员补登系统";
+$page_title = "湛江一中IT社 社员补登系统";
 require("header.php");
 require_once(__DIR__."/class/verification-code.class.php");
 require_once(__DIR__."/class/groups.class.php");
