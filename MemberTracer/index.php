@@ -60,21 +60,33 @@ if((!isset($conf["website_enable"]))||$conf["website_enable"]!="Enabled")
             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <label>入社时间（预估）</label>
                 <span class="label label-info">请务必认真填写此值</span>
-                <div class="input-group">
-                    <select class="form-control" data-val="true" id="JoinYear" Name="JoinYear">
-                        <?php for($i=2013;$i<=2016;$i+=1){ ?>
-                            <option value="<?php echo $i?>"><?php echo($i)?></option>
-                        <?php } ?>
-                    </select>
-                    <span class="input-group-addon" id="basic-addon1">年</span>
-                    <select class="form-control" data-val="true" id="JoinMonth" Name="JoinMonth">
-                        <?php for($i=1;$i<=12;$i+=1){ ?>
-                            <option value="<?php echo $i?>"><?php echo($i)?></option>
-                        <?php } ?>
-                    </select>
-                    <span class="input-group-addon" id="basic-addon1">月</span>
-                    <input type="number" class="form-control" placeholder="入社日期" data-val="true" data-val-range="请用公历日期" data-val-range-max="31" data-val-range-min="1" data-val-required="填写入社日期才能统计哟" id="JoinDate" Name="JoinDate">
-                    <span class="input-group-addon" id="basic-addon1">日</span>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <div class="input-group">
+                            <select class="form-control" data-val="true" id="JoinYear" Name="JoinYear">
+                                <?php for($i=2013;$i<=2016;$i+=1){ ?>
+                                    <option value="<?php echo $i?>"><?php echo($i)?></option>
+                                <?php } ?>
+                            </select>
+                            <span class="input-group-addon">年</span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <div class="input-group">
+                            <select class="form-control" data-val="true" id="JoinMonth" Name="JoinMonth">
+                                <?php for($i=1;$i<=12;$i+=1){ ?>
+                                    <option value="<?php echo $i?>"><?php echo($i)?></option>
+                                <?php } ?>
+                            </select>
+                            <span class="input-group-addon">月</span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <div class="input-group">
+                            <input type="number" class="form-control" placeholder="入社日期" data-val="true" data-val-range="请用公历日期" data-val-range-max="31" data-val-range-min="1" data-val-required="填写入社日期才能统计哟" id="JoinDate" Name="JoinDate">
+                            <span class="input-group-addon">日</span>
+                        </div>
+                    </div>
                 </div>
                 <span class="field-validation-valid text-warning" data-valmsg-for="JoinYear" data-valmsg-replace="true"></span>
                 <span class="field-validation-valid text-warning" data-valmsg-for="JoinMonth" data-valmsg-replace="true"></span>
