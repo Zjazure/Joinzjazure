@@ -85,7 +85,7 @@ if((!isset($conf["website_enable"]))||$conf["website_enable"]!="Enabled")
 
             <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
                 <label for="Phone">手机</label>
-                <input class="form-control text-box single-line" data-val="true" data-val-phone="The 手机 field is not a valid phone number." data-val-regex="你填的是中国的手机号码？" data-val-regex-pattern="^(\+86)?1(3|5|8|7)[0-9]{9}$" id="Phone" name="Phone" type="tel" value="">
+                <input class="form-control text-box single-line" data-val="true" data-val-phone="The 手机 field is not a valid phone number." data-val-regex="你填的是中国的手机号码？" data-val-regex-pattern="^(\+86)?1(3|5|8)[0-9]{9}$" id="Phone" name="Phone" type="tel" value="">
                 <span class="field-validation-valid text-warning" data-valmsg-for="Phone" data-valmsg-replace="true"></span>
             </div>
 
