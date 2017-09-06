@@ -1,16 +1,16 @@
 <?php
-$page_title = "湛江一中IT社 网络报名系统";
+$page_title = "湛江一中IT社 社员补登系统";
 require("header.php");
 require_once(__DIR__."/class/verification-code.class.php");
 require_once(__DIR__."/class/groups.class.php");
 require_once(__DIR__."/class/config.class.php");
 $conf = config::get_configs();
 $anouncements = json_decode(file_get_contents(__DIR__."/JsonData/Anouncement.json"),true);
-
 ?>
+<?php if(!isset($_SESSION["Verify_Stage"])||$_SESSION["Verify_Stage"]!="Verified") header("Location: verify.php"); ?>
 <div class="container" style="background-color:rgba(255,255,255,0.83)">
     <div class="page-header">
-        <h1>湛江一中IT社 网络报名系统</h1>
+        <h1>湛江一中IT社 社员补登系统</h1>
     </div>
 <?php
 if((!isset($conf["website_enable"]))||$conf["website_enable"]!="Enabled")
@@ -36,25 +36,17 @@ if((!isset($conf["website_enable"]))||$conf["website_enable"]!="Enabled")
                 <label for="Gender">性别</label>
                 <span class="label label-info">必填</span>
                 <select class="form-control valid" data-val="true" data-val-required="The 性别 field is required." id="Gender" name="Gender" aria-required="true" aria-invalid="false" aria-describedby="Gender-error">
-                    <option value="True">汉子</option>
-                    <option value="False">妹纸</option>
+                    <option value="True">男</option>
+                    <option value="False">女</option>
                 </select>
             </div>
             <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
                 <label for="Grade">年级</label>
                 <span class="label label-info">必填</span>
                 <select class="form-control valid" data-val="true" data-val-number="The field 年级 must be a number." data-val-required="The 年级 field is required." id="Grade" name="Grade" aria-required="true" aria-invalid="false" aria-describedby="Grade-error">
-                    <?php       
-                    if(date("n") < 7){
-                        $grade1 = date("Y",strtotime("-1 year"));
-                        $grade2 = date("Y",strtotime("-2 year"));
-                    }else{
-                        $grade1 = date("Y");
-                        $grade2 = date("Y",strtotime("-1 year"));
-                    }
-                    ?>
-                    <option value="<?php echo $grade1?>">高一(<?php echo $grade1?>年入学)</option>
-                    <option value="<?php echo $grade2?>">高二(<?php echo $grade2?>年入学)</option>
+                    <?php for($i=2013;$i<=2016;$i+=1){ ?>
+                        <option value="<?php echo $i?>"><?php echo($i)?>级(<?php echo $i?>年入学)</option>
+                    <?php } ?>
                 </select>
             </div>
             <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
@@ -63,17 +55,50 @@ if((!isset($conf["website_enable"]))||$conf["website_enable"]!="Enabled")
                 <input class="form-control text-box single-line" data-val="true" data-val-number="The field 班级 must be a number." data-val-range="同学你走错班了" data-val-range-max="42" data-val-range-min="1" data-val-required="填写班级，福利送上门哦" id="Class" name="Class" placeholder="1 - 42" type="number" value="">
                 <span class="field-validation-valid text-warning" data-valmsg-for="Class" data-valmsg-replace="true"></span>
             </div>
-
-
         </div>
-
-        <div class="form-group">
-            <label>兴趣与方向</label>
-            <span class="label label-info">必填</span>
-            <input class="form-control text-box single-line" data-val="true" data-val-required="填一下你的兴趣方向嘛" id="Groups" name="Groups" type="text" value="">
-            <span class="field-validation-valid text-warning" data-valmsg-for="Groups" data-valmsg-replace="true"></span>
+        <div class="row">
+            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label>入社时间（预估）</label>
+                <span class="label label-info">请务必认真填写此值</span>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <div class="input-group">
+                            <select class="form-control" data-val="true" id="JoinYear" Name="JoinYear">
+                                <?php for($i=2013;$i<=2016;$i+=1){ ?>
+                                    <option value="<?php echo $i?>"><?php echo($i)?></option>
+                                <?php } ?>
+                            </select>
+                            <span class="input-group-addon">年</span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <div class="input-group">
+                            <select class="form-control" data-val="true" id="JoinMonth" Name="JoinMonth">
+                                <?php for($i=1;$i<=12;$i+=1){ ?>
+                                    <option value="<?php echo $i?>"><?php echo($i)?></option>
+                                <?php } ?>
+                            </select>
+                            <span class="input-group-addon">月</span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <div class="input-group">
+                            <input type="number" class="form-control" placeholder="入社日期" data-val="true" data-val-range="请用公历日期" data-val-range-max="31" data-val-range-min="1" data-val-required="填写入社日期才能统计哟" id="JoinDate" Name="JoinDate">
+                            <span class="input-group-addon">日</span>
+                        </div>
+                    </div>
+                </div>
+                <span class="field-validation-valid text-warning" data-valmsg-for="JoinYear" data-valmsg-replace="true"></span>
+                <span class="field-validation-valid text-warning" data-valmsg-for="JoinMonth" data-valmsg-replace="true"></span>
+                <span class="field-validation-valid text-warning" data-valmsg-for="JoinDate" data-valmsg-replace="true"></span>
+            </div>
+            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label for="Grade">兴趣相关</label>
+                <span class="label label-info">必填</span>
+                <input class="form-control text-box single-line" data-val="true" data-val-required="请填写相关兴趣" id="Groups" name="Groups" type="text" value="">
+                <span class="field-validation-valid text-warning" data-valmsg-for="Groups" data-valmsg-replace="true"></span>
+            </div>
         </div>
-
         <div class="row">
             <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
                 <label for="Email">邮箱</label>
@@ -85,7 +110,7 @@ if((!isset($conf["website_enable"]))||$conf["website_enable"]!="Enabled")
 
             <div class="form-group col-lg-3 col-md-4 col-sm-6 col-xs-12">
                 <label for="Phone">手机</label>
-                <input class="form-control text-box single-line" data-val="true" data-val-phone="The 手机 field is not a valid phone number." data-val-regex="你填的是中国的手机号码？" data-val-regex-pattern="^(\+86)?1(3|5|8)[0-9]{9}$" id="Phone" name="Phone" type="tel" value="">
+                <input class="form-control text-box single-line" data-val="true" data-val-phone="The 手机 field is not a valid phone number." data-val-regex="你填的是中国的手机号码？" data-val-regex-pattern="^(\+86)?1(3|5|8|7)[0-9]{9}$" id="Phone" name="Phone" type="tel" value="">
                 <span class="field-validation-valid text-warning" data-valmsg-for="Phone" data-valmsg-replace="true"></span>
             </div>
 
@@ -109,13 +134,7 @@ if((!isset($conf["website_enable"]))||$conf["website_enable"]!="Enabled")
         </div>
 
         <div class="form-group">
-            <label>验证码</label>         
-            <p id='question'></p>
-            <input class="form-control text-box single-line" data-val="true" data-val-remote="验证码错误" data-val-remote-url="verification-code.php" data-val-required="怎么可以不填验证码呢" id="VerificationCodeAnswer" name="VerificationCodeAnswer" type="text" value="">
-            <input class="form-control text-box single-line" data-val="true" data-val-remote-url="AnswerHandler.php" id="VerificationPost" name="VerificationPost" type="text" value="<?php echo $QuestionCode;?>" style="display: none">
-            <span class="field-validation-valid text-warning" data-valmsg-for="VerificationCodeAnswer" data-valmsg-replace="true"></span>
-            <button id="RefreshQ" type="button" class="btn btn-sm btn-link">换个问题</button>
-            <button type="submit" class="btn btn-info">提交报名表</button>
+            <button type="submit" class="btn btn-info">补登信息</button>
             <button type="reset" class="btn btn-link">重新填写</button>
         </div>
     </form>

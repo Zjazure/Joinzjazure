@@ -1,5 +1,5 @@
 <?php 
-$page_title = "湛江一中IT社网络报名系统 管理后台";
+$page_title = "湛江一中IT社社员补登系统 管理后台";
 require("header.php");
 require_once(dirname(__DIR__)."/class/member.class.php");
 ?>
@@ -9,7 +9,7 @@ require_once(dirname(__DIR__)."/class/member.class.php");
 ?>
 <div class="container" style="background-color:rgba(255,255,255,0.83)">
     <div class="page-header">
-        <h1>湛江一中IT社网络报名系统 管理后台<a href="logout.php" class="btn btn-info" style="float:right;margin-left:5px;">注销</a><a class="btn btn-info" style="float:right;" data-toggle="modal" data-target="#editDBModel">配置</a></h1>
+        <h1>湛江一中IT社社员补登系统 管理后台<a href="logout.php" class="btn btn-info" style="float:right;margin-left:5px;">注销</a><a class="btn btn-info" style="float:right;" data-toggle="modal" data-target="#editDBModel">配置</a></h1>
     </div>
     <!--Dialog-->
     <div class="modal fade" id="editDBModel" tabindex="-1" role="dialog" aria-labelledby="editDBModel">
@@ -70,7 +70,8 @@ require_once(dirname(__DIR__)."/class/member.class.php");
                 <th>性别</th>
                 <th>年级</th>
                 <th>班级</th>
-                <th>小组</th>
+                <th>入社年份</th>
+                <th>兴趣方向</th>
                 <th>邮箱</th>
                 <th>手机</th>
                 <th>QQ</th>
@@ -92,6 +93,7 @@ require_once(dirname(__DIR__)."/class/member.class.php");
                         <td><?php echo(($member->gender==1)?"男":"女"); ?></td>
                         <td><?php echo($member->grade); ?></td>
                         <td><?php echo($member->class); ?></td>
+                        <td><?php echo(date("Y年m月d日",$member->joindate)); ?></td>
                         <td><?php echo($member->groups);?></td>
                         <td><?php echo($member->email); ?></td>
                         <td><?php echo($member->phone); ?></td>

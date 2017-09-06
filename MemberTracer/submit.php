@@ -1,13 +1,14 @@
+<?php if(!isset($_SESSION["Verify_Stage"])||$_SESSION["Verify_Stage"]!="Verified") header("Location: verify.php"); ?>
 <?php if($_SERVER['REQUEST_METHOD']=="POST"){?>
 <?php 
-$page_title = "湛江一中IT社 网络报名系统";
+$page_title = "湛江一中IT社 社员补登系统";
 require("header.php");
 ?>
 <?php require_once(__DIR__."/class/member.class.php");?>
 <?php require_once(__DIR__."/class/config.class.php");?>
 <div class="container" style="background-color:rgba(255,255,255,0.83)">
     <div class="page-header">
-        <h1>湛江一中IT社 网络报名系统</h1>
+        <h1>湛江一中IT社 社员补登系统</h1>
     </div>
 <?php 
 $conf = config::get_configs();
@@ -19,14 +20,16 @@ else
 ?>
 
 <?php
-    
     if(isset($conf["website_enable"])&&$conf["website_enable"]=="Enabled")
     {
+        $date = date_create($_POST["JoinYear"]."-".$_POST["JoinMonth"]."-".$_POST["JoinDate"]);
+        $dt = date_timestamp_get($date);
         $member = new member();
         $member->name = $_POST["Name"];
         $member->gender = $_POST["Gender"]=="True"?true:false;
         $member->grade = $_POST["Grade"];
         $member->class = $_POST["Class"];
+        $member->joindate = $dt;
         $member->groups = $_POST["Groups"];
         $member->email = $_POST["Email"];
         $member->phone = $_POST["Phone"];

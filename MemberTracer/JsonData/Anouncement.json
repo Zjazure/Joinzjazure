@@ -1,0 +1,5 @@
+{
+    "Index":"<p>各位社员请按要求补登记录</p><p>准确地填写入社日期和个人简介能帮助我们快速确定你的真实入社时间</p>",
+    "Submit":"<h2 class=\"alert alert-success\">谢谢！补登信息已成功提交</h2>",
+    "DisabledSubmit":"<h3 class=\"alert alert-danger\">补登系统尚未开放</h3>"
+}
